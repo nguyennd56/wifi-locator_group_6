@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/listview_signal"
+        android:layout_width="fill_parent"
+        android:layout_height="226dp"
+        android:layout_weight="0.91"
+        android:background="#000000" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="20sp"
+        android:layout_weight="0.33" >
+
+        <Button
+            android:id="@+id/scan_re"
+            android:layout_width="144dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="Scan"
+            android:textColor="#f8f8ff" />
+
+        <Button
+            android:id="@+id/back_to_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/scan_re"
+            android:background="#000000"
+            android:text="Menu"
+            android:gravity="center"
+            android:textColor="#f8f8ff" />
+
+        <Button
+            android:id="@+id/quit_r"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/back_to_menu"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/back_to_menu"
+            android:background="#000000"
+            android:text="Quit"
+            android:textColor="#f8f8ff" />
+
+    </RelativeLayout>
+
+</LinearLayout>
