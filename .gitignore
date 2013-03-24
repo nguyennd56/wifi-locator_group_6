@@ -18,3 +18,16 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+
+
+# structure of the app: main part
+1st activity: startup {in this activity, automatically check wifi state, if it is off then turn on it}
+2nd activity: meny{in this activity, we will loacte function}
+3nd the sub activity of each function
+
+
+
+# some rule in name:
+java file: NameOfClass
+xml file: nameofclass_layout
+image file: im_index (~image file index)
