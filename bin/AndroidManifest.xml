@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.example2"
+    package="com.example.wifi"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="WiFiLocator"
+        android:icon="@drawable/wi_4"
+        android:label="WiFi Locator"
         android:theme="@style/AppTheme" >
-        
         <activity
-            android:name="com.example.example2.Splash"
-            android:label="startup" >
+            android:name="com.example.wifi.Startup"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,34 +25,49 @@
             </intent-filter>
         </activity>
                 <activity
-            android:name="com.example.example2.Scan"
-            android:label="Scan Wifi" >
-            <intent-filter>
-                <action android:name="com.example.example2.SCAN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.example2.Menu"
+            android:name="com.example.wifi.Menu"
             android:label="Menu" >
             <intent-filter>
-                <action android:name="com.example.example2.MENU" />
+                <action android:name="com.example.wifi.MENU" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.example2.AboutUs"
-            android:label="@string/app_name" 
-            android:theme="@android:style/Theme.Dialog">            <intent-filter>
-                <action android:name="com.example.example2.ABOUTUS" />
+            android:name="com.example.wifi.Scan"
+            android:label="Scan" >
+            <intent-filter>
+                <action android:name="com.example.wifi.SCAN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-    </application>
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>"
+        <activity
+            android:name="com.example.wifi.ListSignal"
+            android:label="List Signals" >
+            <intent-filter>
+                <action android:name="com.example.wifi.LISTSIGNAL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+                <activity
+            android:name="com.example.wifi.Edit"
+            android:label="Edit" >
+            <intent-filter>
+                <action android:name="com.example.wifi.EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+		<activity
+            android:name="com.example.wifi.History"
+            android:label="Scan" >
+            <intent-filter>
+                <action android:name="com.example.wifi.HISTORY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        </application>
 </manifest>
