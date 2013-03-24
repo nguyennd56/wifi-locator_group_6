@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#006400"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="137dp"
+        android:layout_gravity="center"
+        android:background="#98fb98"
+        android:gravity="center"
+        android:text="This Activity for edit signal info"
+        android:textColor="#191970"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="42sp"
+        android:background="#37cfc0"
+        android:ems="10"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="Texting something" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/quit_r"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8b4513"
+        android:text="Enter" />
+
+</LinearLayout>
