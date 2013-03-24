@@ -1,4 +1,4 @@
-package com.example.example2;
+package com.example.wifi;
 
 import java.util.List;
 
@@ -24,33 +24,39 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Scan extends Activity {
-
-	WifiManager mainWifi;
+	///Variable
+	WifiManager mainWifi;//
     WifiReceiver receiverWifi;
     List<ScanResult> wifiList;
     StringBuilder sb = new StringBuilder();
     TextView NumberOfWiFi;
-
+    //---Oncreat
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.scan_layout);
 		
 		//refresh= (Button)findViewById(R.id.btnRefresh);
 		NumberOfWiFi = (TextView)findViewById(R.id.txtWifi);
-		 mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-	     receiverWifi = new WifiReceiver();
-	     registerReceiver(receiverWifi, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-	     mainWifi.startScan();
-	     wifiList = mainWifi.getScanResults();	     
+		mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+	    receiverWifi = new WifiReceiver();
+	    registerReceiver(receiverWifi, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+	    //--check if wifi is off then set it to on state
+	    mainWifi = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+	    if(!mainWifi.isWifiEnabled()){
+	    	mainWifi.setWifiEnabled(true);
+	    }
+	    //start scan
+	    mainWifi.startScan();
+	    wifiList = mainWifi.getScanResults();	     
 		ListView list = (ListView) findViewById(R.id.listView1);
+	
 
 		Product[] items = new Product[wifiList.size()];
 		NumberOfWiFi.setText("Detecting "+wifiList.size()+ " WiFi Signals");
 		for(int i = 0; i < wifiList.size(); i++){
 			items[i]= new Product((wifiList.get(i)).level, (wifiList.get(i)).SSID, "unknow");
 		}
-		//items[0]= new Product(());
 		ArrayAdapter<Product> adapter = new ArrayAdapter<Product>(this,android.R.layout.simple_list_item_1,items);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new OnItemClickListener(){
@@ -84,6 +90,11 @@ public class Scan extends Activity {
 	
 
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    	//--check if wifi is off then set it to on state
+	    mainWifi = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+	    if(!mainWifi.isWifiEnabled()){
+	    	mainWifi.setWifiEnabled(true);
+	    }
         mainWifi.startScan();
         return super.onMenuItemSelected(featureId, item);
     }
