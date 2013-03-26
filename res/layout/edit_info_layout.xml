@@ -26,6 +26,7 @@
         android:ems="10"
         android:layout_gravity="center"
         android:gravity="center"
+<<<<<<< HEAD
         android:hint="[Enter the place name here]" />
 
 
@@ -48,5 +49,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
      	android:text="This Activity for edit signal info"/>
+=======
+        android:hint="Texting something" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/quit_r"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8b4513"
+        android:text="Enter" />
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 
 </LinearLayout>

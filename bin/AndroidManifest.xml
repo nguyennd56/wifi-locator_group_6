@@ -9,8 +9,11 @@
         android:targetSdkVersion="17" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+=======
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 
     <application
         android:allowBackup="true"

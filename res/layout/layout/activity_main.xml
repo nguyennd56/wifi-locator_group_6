@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:orientation="vertical"
+	
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/tt_display"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tt_display"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Total is 0"
+        android:textSize="100dp"
+        android:textStyle="bold" />
+
+	<Button
+	    android:id="@+id/add_id"
+	    android:layout_width="230dp"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/sub_id"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:text="add one"
+	    android:textSize="25dp" />
+
+	<Button
+	    android:id="@+id/sub_id"
+	    android:layout_width="230dp"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/add_id"
+	    android:layout_alignParentBottom="true"
+	    android:gravity="center"
+	    android:text="subtract one"
+	    android:textSize="25dp" />
+
+	<RadioButton
+	    android:id="@+id/radioButton1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_below="@+id/tt_display"
+	    android:text="RadioButton" />
+
+</RelativeLayout>

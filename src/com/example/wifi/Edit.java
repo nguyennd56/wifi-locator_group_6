@@ -1,5 +1,6 @@
 package com.example.wifi;
 
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.File;
@@ -26,10 +27,18 @@ public class Edit extends Activity{
 	EditText textBox;
 	TextView mainText;
 	Button save;
+=======
+import android.app.Activity;
+import android.os.Bundle;
+
+public class Edit extends Activity{
+
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+<<<<<<< HEAD
 		s= new Signal(123,"notthing","in your eyes");
 		s= (Signal)getIntent().getSerializableExtra("clicked");
 		
@@ -93,6 +102,9 @@ public class Edit extends Activity{
 			ioe.printStackTrace();
 		}
 		
+=======
+		setContentView(R.layout.edit_info_layout);
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 	}
 
 	@Override
@@ -101,6 +113,7 @@ public class Edit extends Activity{
 		super.onPause();
 	}
 	
+<<<<<<< HEAD
 	public void onClickLoad(View view) {
 		ArrayList<Signal> _wifiList= new ArrayList<Signal>();
 		try
@@ -143,4 +156,8 @@ public class Edit extends Activity{
        mainText.setText(sb);
 	}
 	
+=======
+	
+
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 }

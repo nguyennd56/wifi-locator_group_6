@@ -9,13 +9,19 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentLeft="true"
+<<<<<<< HEAD
 	    android:layout_alignParentTop="true"
 	    android:layout_alignRight="@+id/ssid"
 	    android:layout_marginTop="21dp"
+=======
+	    
+	    android:layout_toLeftOf="@+id/wifi_level"
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 	    android:text="name"
 	    android:textColor="#ffa500"
 	    android:textSize="18sp"
 	    android:textStyle="normal" />
+<<<<<<< HEAD
 
 	<TextView
 	    android:id="@+id/ssid"
@@ -28,12 +34,25 @@
 	    android:textColor="#ffff00"
 	    android:textSize="22sp"
 	    android:textStyle="normal" />
+=======
+		
+	<ImageView
+	    android:id="@+id/wifi_level"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/rate"
+	    android:layout_alignParentRight="true"
+	    android:paddingRight="15dp"
+	    android:paddingTop="10dp"
+	    android:src="@drawable/ic_launcher" />
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 
 	<TextView
 	    android:id="@+id/rate"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentLeft="true"
+<<<<<<< HEAD
 	    android:layout_alignRight="@+id/ssid"
 	    android:layout_below="@+id/name"
 	    android:text="rate"
@@ -59,5 +78,26 @@
 	    android:layout_alignParentRight="true"
 	    android:layout_below="@+id/rate"
 	    android:text="_______________________________________________" />
+=======
+	    android:layout_below="@+id/name"
+	    android:layout_marginTop="16dp"
+	    android:text="rate"
+	    android:textColor="#ffff00"
+	    android:textSize="18sp"
+	    android:textStyle="normal" />
+
+	<TextView
+	    android:id="@+id/ssid"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/wifi_level"
+	    android:layout_alignParentLeft="true"
+	    android:layout_marginBottom="17dp"
+	    android:layout_toLeftOf="@+id/wifi_level"
+	    android:text="ssid"
+	    android:textColor="#006400"
+	    android:textSize="18sp"
+	    android:textStyle="normal" />
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 	
 </RelativeLayout>

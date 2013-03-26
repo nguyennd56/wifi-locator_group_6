@@ -1,10 +1,13 @@
 package com.example.wifi;
 
+<<<<<<< HEAD
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+=======
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +20,10 @@ import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.os.Environment;
+=======
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -95,8 +101,12 @@ public class ListSignal extends Activity{
 	
 	public void setListView(){
 		ArrayList<Signal> image_details = getScanResults();
+<<<<<<< HEAD
 		ArrayList<Signal> from_saving = getSignalSaved();
 		compare(image_details, from_saving);
+=======
+		
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 		final ListView lv1 = (ListView) findViewById(R.id.listview_signal);
 		lv1.setAdapter(new SignalsForm(this,image_details));
 		//set on item click
@@ -104,6 +114,7 @@ public class ListSignal extends Activity{
         	@Override
         	public void onItemClick(AdapterView<?> a, View v, int position, long id) { 
         		
+<<<<<<< HEAD
         		Signal o = (Signal)lv1.getItemAtPosition(position);
             	//Functions obj_itemDetails = (Functions)o;
         		//Signal o=image_details.get(position);
@@ -111,6 +122,13 @@ public class ListSignal extends Activity{
         			Class ourClass = Class.forName("com.example.wifi.Edit");
         			Intent ourIntent = new Intent(ListSignal.this,ourClass);
         			ourIntent.putExtra("clicked", o);
+=======
+        		Object o = lv1.getItemAtPosition(position);
+            	//Functions obj_itemDetails = (Functions)o;
+            	try{
+        			Class ourClass = Class.forName("com.example.wifi.Edit");
+        			Intent ourIntent = new Intent(ListSignal.this,ourClass);
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
         			startActivity(ourIntent);
         		}catch(ClassNotFoundException e){
         			e.printStackTrace();
@@ -195,6 +213,7 @@ public class ListSignal extends Activity{
         }
     }
 	
+<<<<<<< HEAD
     protected ArrayList<Signal> getSignalSaved() {
     	ArrayList<Signal> _wifiList= new ArrayList<Signal>();
     	try
@@ -231,4 +250,7 @@ public class ListSignal extends Activity{
     		}
     	}
     }
+=======
+	
+>>>>>>> 79b5900c4ea127045cfb61b37ede00a95e57e4b4
 }
