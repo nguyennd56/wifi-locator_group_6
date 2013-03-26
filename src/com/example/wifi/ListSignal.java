@@ -1,5 +1,10 @@
 package com.example.wifi;
 
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +17,7 @@ import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -89,7 +95,8 @@ public class ListSignal extends Activity{
 	
 	public void setListView(){
 		ArrayList<Signal> image_details = getScanResults();
-		
+		ArrayList<Signal> from_saving = getSignalSaved();
+		compare(image_details, from_saving);
 		final ListView lv1 = (ListView) findViewById(R.id.listview_signal);
 		lv1.setAdapter(new SignalsForm(this,image_details));
 		//set on item click
@@ -97,11 +104,13 @@ public class ListSignal extends Activity{
         	@Override
         	public void onItemClick(AdapterView<?> a, View v, int position, long id) { 
         		
-        		Object o = lv1.getItemAtPosition(position);
+        		Signal o = (Signal)lv1.getItemAtPosition(position);
             	//Functions obj_itemDetails = (Functions)o;
+        		//Signal o=image_details.get(position);
             	try{
         			Class ourClass = Class.forName("com.example.wifi.Edit");
         			Intent ourIntent = new Intent(ListSignal.this,ourClass);
+        			ourIntent.putExtra("clicked", o);
         			startActivity(ourIntent);
         		}catch(ClassNotFoundException e){
         			e.printStackTrace();
@@ -186,5 +195,40 @@ public class ListSignal extends Activity{
         }
     }
 	
+    protected ArrayList<Signal> getSignalSaved() {
+    	ArrayList<Signal> _wifiList= new ArrayList<Signal>();
+    	try
+		{
+	    	File sdCard = Environment.getExternalStorageDirectory();
+	        File directory = new File (sdCard.getAbsolutePath() + 
+	            "/MyFiles");
+	        File file = new File(directory, "signal.data");
+	        FileInputStream fIn = new FileInputStream(file);
+	        ObjectInputStream in = new ObjectInputStream(fIn);
+	        while (true) {
+	            _wifiList.add( (Signal) in.readObject());
+	        }
+		}
+        catch (EOFException e) {
+			e.printStackTrace();
+			}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			}
+		catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+
+	    return _wifiList;
+    }
 	
+    public void compare(ArrayList<Signal> source, ArrayList<Signal> des) {
+    	for(int i=0; i< source.size(); i++) {
+    		for(int j=0; j< des.size(); j++) {
+    			if(source.get(i).equalTo(des.get(j))) {
+    				source.get(i).setName(des.get(j).getName());
+    			}
+    		}
+    	}
+    }
 }

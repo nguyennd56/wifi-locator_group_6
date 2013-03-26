@@ -26,16 +26,27 @@
         android:ems="10"
         android:layout_gravity="center"
         android:gravity="center"
-        android:hint="Texting something" >
+        android:hint="[Enter the place name here]" />
 
-        <requestFocus />
-    </EditText>
 
     <Button
-        android:id="@+id/quit_r"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#8b4513"
-        android:text="Enter" />
+        android:id="@+id/btSave"
+	    android:text="Save"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+  	  	android:onClick="onClickSave" />
+    
+     <Button
+        android:id="@+id/btLoad"
+	    android:text="Load"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+  	  	android:onClick="onClickLoad" />
+    
+     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+     	android:text="This Activity for edit signal info"/>
 
 </LinearLayout>
