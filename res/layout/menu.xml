@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/listV_main"
+        android:layout_width="fill_parent"
+        android:layout_height="373dp"
+        android:layout_weight="0.61" />
+
+    <Button
+        android:id="@+id/quit_menu"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_weight="0.28"
+        android:background="#000000"
+        android:text="Quit"
+        android:textColor="#f8f8ff" />
+
+</LinearLayout>
