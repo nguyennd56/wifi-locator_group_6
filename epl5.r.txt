@@ -1,0 +1,13 @@
+The following changes since commit 2f2bd6a942debc0d69f1a43f627e56ca50beebc4:
+
+  epl4.r.txt example (2013-04-03 18:45:50 +0700)
+
+are available in the git repository at:
+
+  https://github.com/nguyennd56/wifi-locator_group_6.git nguyennd_56
+
+for you to fetch changes up to 2f2bd6a942debc0d69f1a43f627e56ca50beebc4:
+
+  epl4.r.txt example (2013-04-03 18:45:50 +0700)
+
+----------------------------------------------------------------
