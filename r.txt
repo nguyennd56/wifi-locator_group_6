@@ -1,0 +1,2 @@
+New Function: label the place name for a new place
+	      Show the place name that has labeled.
