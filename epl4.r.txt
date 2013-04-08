@@ -1,4 +1,0 @@
-uet.g2.301.leftcorner
-uet.g2.301.rightcorner
-uet.g2.301.top
-uet.g2.301.bottom
