@@ -1,0 +1,10 @@
+Wifi-locator's Story:
+1, WiList: List all wifi appeared around, each wifi as an entry that contain fields: SSID, strength of wifi.
+2, History: List of wifi have connected.
+3, Sort: Arrange list of wifi by optional key.
+4, Rate: Rate the wifi for later time.
+5, Find location: Find location of the device basing on the wifi signals.
+6, display the information of curent location.
+7, allow user to add information for their locator.
+8, Save the recent location.
+

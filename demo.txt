@@ -1,0 +1,11 @@
+
+Story
+
++ WifiList
+    show the list of all wifi appeared around, each wifi as an entry that contain fields: SSID, strength of wifi....
++ Find location:
+    Find location of the device basing on the wifi signals and view it on the map.
++ Location info:
+    Show the information of current location and allow user to add information of their location.
++ User data.
+    Save user data such as their home, their office and the location which thier recently traveled. 
