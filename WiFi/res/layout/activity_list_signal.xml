@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/location_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.07"
+        android:ems="30"
+        android:gravity="center"
+        android:hint="Location"
+        android:textSize="35sp" 
+        android:textColor="#f8f5ff" >
+		
+        <requestFocus />
+    </TextView>
+
+    <ListView
+        android:id="@+id/listview_signal"
+        android:layout_width="fill_parent"
+        android:layout_height="226dp"
+        android:layout_weight="0.30"
+        android:background="#000000" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/quit_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/back_to_menu"
+            android:layout_alignParentRight="true"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="Quit"
+            android:textColor="#f8f8ff" />
+
+        <Button
+            android:id="@+id/add_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/scan_re"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="Save Place"
+            android:textColor="#f8f8ff" />
+
+        <Button
+            android:id="@+id/scan_re"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/back_to_menu"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="Rescan"
+            android:textColor="#f8f8ff" />
+
+        <Button
+            android:id="@+id/back_to_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/quit_r"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="Back"
+            android:textColor="#f8f8ff" />
+
+    </RelativeLayout>
+
+</LinearLayout>
