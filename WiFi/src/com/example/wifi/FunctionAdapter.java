@@ -39,9 +39,20 @@ public class FunctionAdapter extends BaseAdapter {
 		layoutInflater = LayoutInflater.from(context);
 	}
 	//<-- implement abstract methods 
-	public int getCount() {return functionDetailList.size();}
-	public Object getItem(int position) {return functionDetailList.get(position);}
-	public long getItemId(int position) {return position;}
+	public int getCount() 
+	{
+		return functionDetailList.size();
+	}
+	
+	public Object getItem(int position) 
+	{
+		return functionDetailList.get(position);
+	}
+	
+	public long getItemId(int position) 
+	{
+		return position;
+	}
 	//-->
 	//make all functions in listView
 	public View getView(int position, View convertView, ViewGroup parent) {

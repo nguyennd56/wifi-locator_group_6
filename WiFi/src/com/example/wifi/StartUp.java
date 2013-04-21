@@ -27,8 +27,7 @@ public class StartUp extends Activity {
 	ProgressBar progressBar;			//view on layout
 	int progressStatus = START_POINT;				//update the progress counting
 	Handler handler = new Handler();	//manage runnable
-	WifiManager wifiManager;			// manage Wifi service
-	
+		
 	//Method
 	//1. onCreate() do when Activity first run.
 	@Override
@@ -39,12 +38,28 @@ public class StartUp extends Activity {
 		setUp();
 		
 		//Check wifi, and automatically enable if it is off
-		if(!wifiManager.isWifiEnabled()){
-			wifiManager.setWifiEnabled(true);
-		}
+		checkWiFi();
 		
         //---do some work in background thread--- 
-        new Thread(new Runnable(){ 
+        delayForTurningWiFi();
+	}
+	
+	//2. onPause() do when the Activity in pause state
+	@Override
+	protected void onPause(){
+		// TODO Auto-generated method stub
+		super.onPause();
+		finish();
+	}
+	private void setUp(){
+		setContentView(R.layout.activity_start_up);
+		progress = START_POINT; 
+        progressBar = (ProgressBar) findViewById(R.id.progressBar1); 
+
+	}
+	
+	private void delayForTurningWiFi(){
+		new Thread(new Runnable(){ 
         	public void run() { 
                   //---count progress--- 
                  while (progressStatus < END_POINT){ 
@@ -71,22 +86,14 @@ public class StartUp extends Activity {
                  } 
                  return ++progress; //increasing...
             } 
-        }).start(); 
+        }).start();
 	}
 	
-	//2. onPause() do when the Activity in pause state
-	@Override
-	protected void onPause(){
-		// TODO Auto-generated method stub
-		super.onPause();
-		finish();
-	}
-	private void setUp(){
-		setContentView(R.layout.activity_start_up);
-		wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-		progress = START_POINT; 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar1); 
-
+	private void checkWiFi(){
+		WifiManager wifiManager =(WifiManager) getSystemService(Context.WIFI_SERVICE);
+		if(!wifiManager.isWifiEnabled()){
+			wifiManager.setWifiEnabled(true);
+		}
 	}
 	
 }

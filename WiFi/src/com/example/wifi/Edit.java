@@ -30,7 +30,7 @@ public class Edit extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		signal= new Signal(123,"notthing","in your eyes");
+		signal= new Signal("default","default","default",0,0,0);
 		signal= (Signal)getIntent().getSerializableExtra("clicked");
 		
 		setContentView(R.layout.activity_edit);
@@ -56,7 +56,7 @@ public class Edit extends Activity{
 	            FileOutputStream _fOut = new FileOutputStream(_file,true);
 	            
 	            ObjectOutputStream _out= new ObjectOutputStream(_fOut);
-	            _out.writeObject(new Signal(000,"UNKNOW","UNKNOW"));
+	            _out.writeObject(new Signal("default","default","default",0,0,0));
 	            _out.close();
             }
         }catch (IOException ioe)
@@ -99,7 +99,7 @@ public class Edit extends Activity{
 	            ObjectOutputStream out= new AppendingObjectOutputStream(fOut);
 	            
 	            
-	            signal.setName(_name);
+	           // signal.setName(_name);
 				out.writeObject(signal);
 				out.close();
 			
@@ -163,7 +163,7 @@ public class Edit extends Activity{
 		StringBuilder stringBuilder = new StringBuilder();
 		for(int i = 0; i < _wifiList.size(); i++){
             stringBuilder.append(Integer.valueOf(i+1).toString() + ".");
-            stringBuilder.append((_wifiList.get(i)).getSSID()+ " "+ _wifiList.get(i).getName());
+            //stringBuilder.append((_wifiList.get(i)).getSSID()+ " "+ _wifiList.get(i).getName());
             stringBuilder.append(System.getProperty ("line.separator"));
         }
        textView.setText(stringBuilder);

@@ -13,21 +13,7 @@ import android.widget.TextView;
 
 public class SignalAdapter extends BaseAdapter{
 	
-	//constant
-	final int POOR_1_SIGNAL = 0;
-	final int POOR_2_SIGNAL = 1;
-	final int POOR_3_SIGNAL = 2;
-	final int FAIR_SIGNAL = 3;
-	final int GOOD_SIGNAL = 4;
-	final int EXCELLENT_SIGNAL = 5;
 	
-	final int POOR_IMAGE_1 = 0;
-	final int POOR_IMAGE_2 = 1;
-	final int POOR_IMAGE_3 = 2;
-	final int FAIR_IMAGE = 3;
-	final int GOOD_IMAGE = 4;
-	final int EXCELLENT_IMAGE = 5;
-
 	//variables
 	private static ArrayList<Signal> SignalitemDetailsrrayList;
 	private Integer[] iconId = {
@@ -71,29 +57,12 @@ public class SignalAdapter extends BaseAdapter{
 		else{
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
+		//set View
 		viewHolder.txt_SSID.setText(SignalitemDetailsrrayList.get(position).getSSID());
-		viewHolder.txt_name.setText(SignalitemDetailsrrayList.get(position).getName());
-		//According to the rate of signal to set Icon for each signal
-		switch(SignalitemDetailsrrayList.get(position).getStrength()){
-		case POOR_1_SIGNAL: {
-			viewHolder.icon.setImageResource(iconId[POOR_IMAGE_1]);
-			viewHolder.txt_rate.setText("level: poor");}break;
-		case POOR_2_SIGNAL: {
-			viewHolder.icon.setImageResource(iconId[POOR_IMAGE_2]);
-			viewHolder.txt_rate.setText("level: poor");}break;
-		case POOR_3_SIGNAL: {
-			viewHolder.icon.setImageResource(iconId[POOR_IMAGE_3]);
-			viewHolder.txt_rate.setText("level: poor");}break;
-		case FAIR_SIGNAL: {
-			viewHolder.icon.setImageResource(iconId[FAIR_IMAGE]);
-			viewHolder.txt_rate.setText("level: fair");}break;
-		case GOOD_SIGNAL: {
-			viewHolder.icon.setImageResource(iconId[GOOD_IMAGE]);
-			viewHolder.txt_rate.setText("level: good");}break;
-		case EXCELLENT_SIGNAL: {viewHolder.icon.setImageResource(iconId[EXCELLENT_IMAGE]);
-			viewHolder.txt_rate.setText("level: excellent");}break;
-		default:viewHolder.icon.setImageResource(iconId[POOR_IMAGE_1]);break;
-		}
+		viewHolder.txt_name.setText(SignalitemDetailsrrayList.get(position).getSSID());
+		viewHolder.icon.setImageResource(iconId[SignalitemDetailsrrayList.get(position).getImage()]);
+		viewHolder.txt_rate.setText("level: "+ SignalitemDetailsrrayList.get(position).getRate());
+		
 		
 		return convertView;
 	}

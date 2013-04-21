@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,6 +17,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.MenuItem;
@@ -113,9 +115,9 @@ public class ListSignal extends Activity{
 				
 		});
 		location= (TextView)findViewById(R.id.location_detail);
-		location.setText(locationDeterminant(currentListSignals));
+		//location.setText(locationDeterminant(currentListSignals));
 	}
-	
+	/*
 	public String locationDeterminant(ArrayList<Signal> currentListSignals) {
 		
 		String locationDetail="you are at a unknow place";
@@ -130,12 +132,12 @@ public class ListSignal extends Activity{
 		
 		return locationDetail;
 	}
-	
+	*/
 	
 	public void setListView(){
 		ArrayList<Signal> image_details = getScanResults();
-		ArrayList<Signal> from_saving = getSignalSaved();
-		compare(image_details, from_saving);
+		//ArrayList<Signal> from_saving = getSignalSaved();
+		//compare(image_details, from_saving);
 		final ListView lv1 = (ListView) findViewById(R.id.listview_signal);
 		lv1.setAdapter(new SignalAdapter(this,image_details));
 		//set on item click
@@ -158,6 +160,7 @@ public class ListSignal extends Activity{
         });
 	}
 
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 	private ArrayList<Signal> getScanResults(){
 		//refresh= (Button)findViewById(R.id.btnRefresh);
 		//NumberOfWiFi = (TextView)findViewById(R.id.txtWifi);
@@ -168,6 +171,7 @@ public class ListSignal extends Activity{
 		wifiManager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
 		if(!wifiManager.isWifiEnabled()){
 			wifiManager.setWifiEnabled(true);
+			for(int i=0; i<20; i++);
 		}
 		//start scan
 	    wifiManager.startScan();
@@ -176,28 +180,15 @@ public class ListSignal extends Activity{
 		ArrayList<Signal> signals = new ArrayList<Signal>();
 		Signal signal;
 		for(int i=0; i<wifiList.size(); i++){
-			String ssid = "SSID:".concat(wifiList.get(i).SSID);
-			String name = "Name:".concat("unknown");
-			int strength = wifiList.get(i).level;
-			if(strength>=-45){
-				strength=5;
-			}
-			else if(strength>=-55){
-				strength = 4;
-			}
-			else if(strength>=-65){
-				strength = 3;
-			}
-			else if(strength>=-75){
-				strength = 2;
-			}
-			else if(strength>=-95){
-				strength = 1;
-			}
-			else {
-				strength =0;
-			}
-			signal = new Signal(strength,ssid, name);
+			signal = new Signal(
+					wifiList.get(i).SSID,
+					wifiList.get(i).BSSID,
+					wifiList.get(i).capabilities,
+					wifiList.get(i).frequency,
+					wifiList.get(i).level,
+					wifiList.get(i).timestamp
+					);
+			signal.setRate();
 			signals.add(signal);
 			
 		}
@@ -234,7 +225,7 @@ public class ListSignal extends Activity{
         }
     }
 	
-    
+    /*
     protected ArrayList<Signal> getSignalSaved() {  // to get all saved wifi signalss.
     	ArrayList<Signal> _wifiList= new ArrayList<Signal>();
     	try
@@ -261,7 +252,8 @@ public class ListSignal extends Activity{
 
 	    return _wifiList;
     }
-	
+    */
+	/*
     public void compare(ArrayList<Signal> source, ArrayList<Signal> des) { // compare between saved wifi signals and caught wifi signals. 
     	for(int i=0; i< source.size(); i++) {
     		for(int j=0; j< des.size(); j++) {
@@ -270,8 +262,8 @@ public class ListSignal extends Activity{
     			}
     		}
     	}
-    }
-    
+    }*/
+    /*
     protected ArrayList<Location> getLocationSaved() {
     	ArrayList<Location> locationList= new ArrayList<Location> ();
     	try
@@ -306,4 +298,5 @@ public class ListSignal extends Activity{
 		}
     	return locationList;
     }
+    */
 }
