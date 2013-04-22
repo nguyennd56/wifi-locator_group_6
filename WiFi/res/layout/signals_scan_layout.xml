@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/location_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.02"
+        android:gravity="center"
+        android:hint="@string/location"
+        android:textSize="35sp" 
+        android:textColor="#f8f7ff"
+        android:background="#00002f" />
+
+    <ListView
+        android:id="@+id/listview_signal"
+        android:layout_width="fill_parent"
+        android:layout_height="226dp"
+        android:layout_weight="0.30"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/add_location"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="onClickAdd"
+            android:text="@string/add" />
+
+        <Button
+            android:id="@+id/scan_re"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClickRescan"
+            android:text="@string/rescan" />
+
+        <Button
+            android:id="@+id/back_to_menu"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="onClickBack"
+            android:text="@string/back" />
+
+        <Button
+            android:id="@+id/quit_r"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="onClickQuit"
+            android:text="@string/quit" />
+    </LinearLayout>
+
+</LinearLayout>
