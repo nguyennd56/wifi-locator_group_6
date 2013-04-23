@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <EditText 
+        android:id="@+id/place_country_edit"
+        android:layout_width="fill_parent"
+        android:hint="Country"
+        android:layout_height="wrap_content"
+        />
+    <EditText 
+        android:id="@+id/place_city_edit"
+        android:layout_width="fill_parent"
+        android:hint="City"
+        android:layout_height="wrap_content"
+        />
+    <EditText 
+        android:id="@+id/place_distric_edit"
+        android:layout_width="fill_parent"
+        android:hint="Distric"
+        android:layout_height="wrap_content"
+        />
+    <EditText 
+        android:id="@+id/place_edit"
+        android:layout_width="fill_parent"
+        android:hint="Location name"
+        android:layout_height="wrap_content"
+        />
+    <EditText 
+        android:id="@+id/place_name_edit"
+        android:layout_width="fill_parent"
+        android:hint="Detail"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/Save_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" 
+        android:onClick="onClickSave"/>
+    <Button 
+        android:id="@+id/Cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:onClick="onClickCancel"/>
+
+</LinearLayout>
