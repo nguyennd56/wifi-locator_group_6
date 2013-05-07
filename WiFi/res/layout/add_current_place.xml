@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/place_name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="0.02"
+        android:background="#ffffff"
+        android:ems="30"
+        android:gravity="center"
+        android:hint="@string/place_name"
+        android:textColor="#000000"
+        android:textSize="25sp" >
+		
+        <requestFocus />
+    </EditText>
+    <Spinner
+    android:id="@+id/spinner1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:drawSelectorOnTop="true" />
+
+    <ListView
+        android:id="@+id/listview_add_location"
+        android:layout_width="fill_parent"
+        android:background="#d0d0f0"
+        android:layout_height="226dp"
+        android:layout_weight="0.30" />
+     <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+		
+         <Button
+            android:id="@+id/add_this_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClickAddHere"
+            android:text="@string/add_location" />
+         
+        <Button
+            android:id="@+id/location_back"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="onClickBack"
+            android:text="@string/back" />
+
+        
+        </LinearLayout>
+   
+</LinearLayout>
