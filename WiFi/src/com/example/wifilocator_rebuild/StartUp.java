@@ -13,6 +13,10 @@ import android.widget.ProgressBar;
 
 
 
+/**
+ * @author Nguyen D. Ngo
+ *
+ */
 public class StartUp extends Activity {
 	/*
 	 * @task: load necessary condition of application.
@@ -20,7 +24,7 @@ public class StartUp extends Activity {
 	 */
 
 	
-	ProgressBar progressBar;
+	private ProgressBar progressBar;
 
 	
 	//Method
@@ -28,8 +32,8 @@ public class StartUp extends Activity {
 	protected void onCreate(Bundle bundle) {
 		// TODO Auto-generated method stub
 		super.onCreate(bundle);
-		progressBar = (ProgressBar) findViewById(R.id.progressBar1); 
-		setContentView(R.layout.startup_layout);
+		
+		setUp();
 		
 		//-- checking wifi is enable? if not turn it on.
 		setWifiEnable();
@@ -37,13 +41,8 @@ public class StartUp extends Activity {
         new Thread(new Runnable(){ 
              public void run(){ 
             	 delayTimeToEnableWiFi();
-                  //---hides the progress bar--- 
-                 Handler handler = new Handler();
-                 handler.post(new Runnable(){ 
-                      public void run(){ 
-                           progressBar.setVisibility(View.GONE); 
-                      } 
-                 });
+                  //run progressBar 
+                 runningProgressBar(progressBar);
                  //start mainActivity is MainTabActivity
                  startMainActivity();
              } 
@@ -56,6 +55,12 @@ public class StartUp extends Activity {
 		super.onPause();
 		finish();
 	}
+	
+	private void setUp(){
+		progressBar = (ProgressBar) findViewById(R.id.progressBar); 
+		setContentView(R.layout.startup_layout);
+	}
+	
 	
 	private void startMainActivity(){
         try{
@@ -74,7 +79,6 @@ public class StartUp extends Activity {
 	final static int DELAY = 3000;
 	private void delayTimeToEnableWiFi(){
 		try { 
-            //---simulate doing some work--- 
             Thread.sleep (DELAY); 
        } catch (InterruptedException e) 
        { 
@@ -92,4 +96,12 @@ public class StartUp extends Activity {
 		}
 	}
 	
+	private void runningProgressBar(final ProgressBar progressBar){
+		Handler handler = new Handler();
+        handler.post(new Runnable(){ 
+             public void run(){ 
+                  progressBar.setVisibility(View.GONE); 
+             } 
+        });
+	}
 }

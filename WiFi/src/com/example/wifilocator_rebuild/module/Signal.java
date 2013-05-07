@@ -2,14 +2,20 @@ package com.example.wifilocator_rebuild.module;
 import java.io.Serializable;
 
 
+/**
+ * @author Nguyen D. Ngo
+ *
+ */
 public class Signal  implements Serializable{
 	/**
+	 * 
 	 * @category Object Signal (of wifi)
 	 * 
 	 * has variable of basic component of a wifi signals.
 	 * implements Serializable to save and load to internal storage.
 	 */
 	private static final long serialVersionUID = 1L;  //default id for serialization.
+	public final static int MAX_ACCEPTABLE_STRENGTH_DIFFIRENCE=10;
 	
 	//-----------variable----------
 	private int strength;
@@ -62,25 +68,24 @@ public class Signal  implements Serializable{
 		return this.BSSID;}
 	public String getRate(){return this.rate;
 	}
-	public void getPlace( Signal _sig) {
-		this.place= _sig.place;
+	public void getPlace( Signal signal) {
+		this.place= signal.place;
 	}
 	
 	//................
-	public boolean equalTo(Signal _sig) {
-		return (this.SSID.equals(_sig.SSID));
-	}
-	
-	public boolean isTrueForLocation (Signal otherSignal) {
-		/*
+	@Override
+	public boolean equals(Object theSignal) {/*
 		 * this function compare this signal with a an other signal.
 		 * using SSID and strength of signals to determine if they are the same.
 		 * this function is used for determining  location. 
 		 */
-		return (this.SSID.equals(otherSignal.SSID)&&(Math.abs(this.strength-otherSignal.strength)<30));
+		Signal signal = (Signal) theSignal;
+		return (this.SSID.equals(signal.SSID)&&
+				(Math.abs(this.strength-signal.strength)<MAX_ACCEPTABLE_STRENGTH_DIFFIRENCE));
 	}
 	
 	
+	@Override
 	public String toString(){
 		return String.format(this.SSID+"\t\t Streng:"+ this.strength + "t["+this.place+"]");
 	}

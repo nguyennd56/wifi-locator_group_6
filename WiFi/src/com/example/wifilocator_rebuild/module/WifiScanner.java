@@ -20,36 +20,57 @@ public class WifiScanner{
 	 * return a ArrayList of Signals objects.
 	 */
 	
+	private static WifiManager wifiManager;
+	private static WifiReceiver wifiReceiver;
 	
 	public static ArrayList<Signal> getScanResults(Activity activity){
-		WifiManager wifiManager = (WifiManager) activity.getSystemService(Context.WIFI_SERVICE);
-		WifiReceiver wifiReceiver = new WifiReceiver();
-		activity.registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-	    //--check if wifi is off then set it to on state
-		wifiManager = (WifiManager)activity.getSystemService(Context.WIFI_SERVICE);
-		if(!wifiManager.isWifiEnabled()){
-			wifiManager.setWifiEnabled(true);
-		}
-		//start scan
-	    wifiManager.startScan();
-	    List<ScanResult> wifiList = wifiManager.getScanResults();
-
-		ArrayList<Signal> signals = new ArrayList<Signal>();
-		Signal signal;
 		
-		//---- cover ScanResult objects to Signals objects-----
-		for(int i=0; i<wifiList.size(); i++){
-			String ssid = "SSID:".concat(wifiList.get(i).SSID);
-			String name = "Name:".concat("unknown");
-			String bssid= "BSSID:".concat(wifiList.get(i).BSSID);
-			int strength = wifiList.get(i).level;
-			signal = new Signal(strength,ssid,bssid, name);
-			signals.add(signal);
-			
-		}
+		setUp(activity);
+		
+	    //--check if wifi is off then set it to on state
+		enableWifi();
+		
+		ArrayList<Signal> signals = getScan();
 		
 		return signals;
 	}
+	
+	private static void setUp(Activity activity){
+		wifiManager = (WifiManager) activity.getSystemService(Context.WIFI_SERVICE);
+		wifiReceiver = new WifiReceiver();
+		activity.registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+	}
+	
+	private static void enableWifi(){
+		if(!wifiManager.isWifiEnabled()){
+			wifiManager.setWifiEnabled(true);
+		}
+	}
+	
+	private static ArrayList<Signal> getScan(){
+	
+		wifiManager.startScan();
+	    List<ScanResult> wifiList = wifiManager.getScanResults();
+
+		ArrayList<Signal> signals = new ArrayList<Signal>();
+		
+		
+		//---- cover ScanResult objects to Signals objects-----
+		for(int i=0; i<wifiList.size(); i++){
+			
+			String ssid = "SSID:".concat(wifiList.get(i).SSID);
+			String name = "Name:".concat(ssid);
+			String bssid= "BSSID:".concat(wifiList.get(i).BSSID);
+			int strength = wifiList.get(i).level;
+			
+			Signal signal = new Signal(strength,ssid,bssid, name);
+			
+			signals.add(signal);
+			
+		}
+		return signals;
+	}
+	
 }
 
 class WifiReceiver extends BroadcastReceiver {
@@ -62,3 +83,5 @@ class WifiReceiver extends BroadcastReceiver {
         public void onReceive(Context c, Intent intent) {
         }
 }
+
+

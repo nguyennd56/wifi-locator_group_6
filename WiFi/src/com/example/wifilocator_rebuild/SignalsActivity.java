@@ -3,7 +3,7 @@ package com.example.wifilocator_rebuild;
 import java.util.ArrayList;
 
 import com.example.wifilocator_rebuild.module.Location;
-import com.example.wifilocator_rebuild.module.SignalsForm;
+import com.example.wifilocator_rebuild.module.SignalBaseAdapter;
 import com.example.wifilocator_rebuild.module.Signal;
 import com.example.wifilocator_rebuild.module.StorageManager;
 import com.example.wifilocator_rebuild.module.WifiScanner;
@@ -28,7 +28,7 @@ public class SignalsActivity extends Activity{
 	//------variable -------
 	public final static String DEFAULT_LOCATION_NAME= " you are at an unknow place";
 	public final static int    MINIMUM_NUMBER_OF_THE_SAME_SIGNAL=2;
-	TextView Location;   
+	private TextView Location;   
 	
 	
 	@Override
@@ -99,7 +99,7 @@ public class SignalsActivity extends Activity{
 		ArrayList<Signal> from_saving = StorageManager.loadSignals();
 		compare(image_details, from_saving);
 		final ListView lv1 = (ListView) findViewById(R.id.listview_signal);
-		lv1.setAdapter(new SignalsForm(this,image_details));
+		lv1.setAdapter(new SignalBaseAdapter(this,image_details));
 		//set on item click
         lv1.setOnItemClickListener(new OnItemClickListener() {
         	@Override
@@ -118,6 +118,10 @@ public class SignalsActivity extends Activity{
         });
 	}
 	
+	/**
+	 * @param source
+	 * @param des
+	 */
 	public void compare(ArrayList<Signal> source, ArrayList<Signal> des) { 
 		/*
 		 * compare between saved wifi signals and caught wifi signals. 
@@ -125,7 +129,7 @@ public class SignalsActivity extends Activity{
 		 */
     	for(int i=0; i< source.size(); i++) {
     		for(int j=0; j< des.size(); j++) {
-    			if(source.get(i).equalTo(des.get(j))) {
+    			if(source.get(i).getSSID().equals(des.get(j).getSSID())) {
     				source.get(i).setPlace(des.get(j).getPlace());
     			}
     		}
