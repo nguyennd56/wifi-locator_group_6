@@ -27,9 +27,9 @@ public class SignalsActivity extends Activity{
 
 	
 	//------variable -------
-	public final static String DEFAULT_LOCATION_NAME= " you are at an unknow place";
-	public final static int    MINIMUM_NUMBER_OF_THE_SAME_SIGNAL=2;
-	TextView Location;   
+	public final static String DEFAULT_LOCATION_NAME = " you are at an unknow place";
+	public final static int MINIMUM_NUMBER_OF_THE_SAME_SIGNAL = 2;
+	transient TextView Location;   
 	
 	
 	@Override
@@ -39,7 +39,7 @@ public class SignalsActivity extends Activity{
 		setContentView(R.layout.signals_scan_layout);
 		Location= (TextView) findViewById(R.id.location_tv);
 		
-		//-- show all wifi signals and current location--
+		//-- show all WIFI signals and current location--
 		setListView(); 
 		Location.setText(locationDeterminant(WifiScanner.getScanResults(this)));
 	}
@@ -97,7 +97,7 @@ public class SignalsActivity extends Activity{
 	/**
 	 * make signals ListView.
 	 * using list of scanned signals to generate.
-	 * using saved signals to get place of wifi.
+	 * using saved signals to get place of WIFI.
 	 */
 	public void setListView() {
 		//-- get current surrounding signals.
@@ -127,7 +127,7 @@ public class SignalsActivity extends Activity{
 	
 	
 	/**
-	 * compare between saved wifi signals and caught wifi signals. 
+	 * compare between saved WIFI signals and caught WIFI signals. 
 	 * if they are the same change place of this signal to place of saved signals.
 	 */
 	public void compare(ArrayList<Signal> source, ArrayList<Signal> des) { 
