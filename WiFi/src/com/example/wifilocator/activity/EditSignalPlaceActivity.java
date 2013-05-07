@@ -15,11 +15,30 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
+/*
+ * 
+ * 
+ * 
+ * 
+ * DON'T CARE 
+ * This function  we don't use in this app
+ * but we don't delete it because we want to repair in later
+ * 
+ * SORRY for this inconvenience
+ * 
+ * But don't care it, again
+ * 
+ * THANKs, guy.
+ * 
+ * 
+ *
+ * 
+ * 
+ */
 public class EditSignalPlaceActivity extends Activity{
-	EditText editTextBox;
-	TextView viewTextBox;
-	Signal clickedSignal;
+	private EditText editTextBox;
+	private TextView viewTextBox;
+	private Signal clickedSignal;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

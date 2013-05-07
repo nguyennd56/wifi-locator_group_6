@@ -27,14 +27,11 @@ public class Tab extends TabActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_tabs_layout);
-        
         TabHost tabHost = getTabHost();
-        
-    
-        
         // Adding all TabSpec to TabHost
         addTab(generateTabSpec(tabHost), tabHost);
     }
+    
     
     private ArrayList<TabSpec> generateTabSpec(TabHost tabHost){
     	ArrayList<TabSpec> tabSpecs = new ArrayList<TabSpec>();
@@ -51,7 +48,9 @@ public class Tab extends TabActivity {
         Intent LocationsIntent = new Intent(this, LocationsActivity.class);
         Locationspec.setContent(LocationsIntent);
         
-        /* next function
+        /* DON'T CARE 
+         * It's just for next release
+         * 
         // Tab for Online
         TabSpec Onlinespec = tabHost.newTabSpec("Online");
         Onlinespec.setIndicator("Online", getResources().getDrawable(R.drawable.icon_videos_tab));

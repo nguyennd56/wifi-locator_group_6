@@ -21,7 +21,7 @@ public class StartUp extends Activity {
 
 
 	
-	
+	final static int DELAY_TIME = 5000;
 	
 	private ProgressBar progressBar;
 	private static WifiManager wifiManager;
@@ -39,7 +39,7 @@ public class StartUp extends Activity {
 		 
         
 
-        //---delay time after enableWifi
+        //---delay time to ensure that WiFi is on after enabling
         new Thread(new Runnable(){ 
              public void run(){ 
                   //delay time to enable WiFi 
@@ -100,7 +100,7 @@ public class StartUp extends Activity {
 	private void runDelayTime(){
 		try { 
             //---simulate doing some work--- 
-            Thread.sleep (5000); 
+            Thread.sleep (DELAY_TIME); 
        } catch (InterruptedException e) 
        { 
             e.printStackTrace(); 

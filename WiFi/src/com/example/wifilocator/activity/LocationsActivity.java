@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.example.wifilocator.module.Location;
 import com.example.wifilocator.module.LocationBaseAdapter;
-import com.example.wifilocator.module.LocationFormEdit;
+import com.example.wifilocator.module.EditableLocate;
 import com.example.wifilocator.module.Signal;
 import com.example.wifilocator.module.StorageManager;
 import com.example.wifilocator_rebuild.R;
@@ -91,7 +91,7 @@ public class LocationsActivity extends Activity {
 		ArrayList<Location> allChildren= currentChoice.getLeafLocation();
 		locationName.setText(currentChoice.printInfo());
 		final ListView lv1 = (ListView) findViewById(R.id.listview_location);
-		lv1.setAdapter(new LocationFormEdit(this,allChildren));
+		lv1.setAdapter(new EditableLocate(this,allChildren));
 		//set on item click
 		lv1.setOnItemClickListener(new OnItemClickListener() {
         	@Override

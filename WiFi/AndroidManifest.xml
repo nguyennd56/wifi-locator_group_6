@@ -32,7 +32,7 @@
         <activity	android:name="com.example.wifilocator.activity.OnlineActivity"/>
         <activity	android:name="com.example.wifilocator.activity.LocationsActivity"/>
         <activity	android:name="com.example.wifilocator.activity.EditSignalPlaceActivity"/>
-         <activity	android:name="com.example.wifilocator.activity.placeManipulateActivity"/>
+         <activity	android:name="com.example.wifilocator.activity.AddCurrentLocationActivity"/>
 
     </application>
 

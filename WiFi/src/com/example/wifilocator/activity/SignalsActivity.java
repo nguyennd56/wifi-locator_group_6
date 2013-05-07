@@ -28,7 +28,7 @@ public class SignalsActivity extends Activity{
 	//------variable -------
 	
 	
-	public final static String DEFAULT_LOCATION_NAME = " you are at an unknow place";
+	public final static String DEFAULT_LOCATION_NAME = " Where are you?";
 	public final static int MINIMUM_NUMBER_OF_THE_SAME_SIGNAL = 2;
 	
 	private TextView Location;   
@@ -39,10 +39,11 @@ public class SignalsActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.signals_scan_layout);
 		Location= (TextView) findViewById(R.id.location_tv);
-		
 		//-- show all WIFI signals and current location--
 		setListView(); 
+		//show the location
 		Location.setText(determineLocate(WifiScanner.getScanResults(this)));
+	
 	}
 	 
 	
@@ -66,16 +67,21 @@ public class SignalsActivity extends Activity{
 	/**
 	 * set the function of back button.
 	 */
+	/*
+	 * DON'T CARE
+	 * Now, It's just an unused function. But in the next release we will use it. 
+	 * 
+	 * 
 	public void onClickBack(View v) {
 
 	}
-	
+	*/
 	
 	/**
 	 * set the function of Rescan button.
 	 * reset ListView of signals and current location. 
 	 */
-	public void onClickRescan(View v) {
+	public void onClickRescan() {
 		setListView();
 		Location.setText(determineLocate(WifiScanner.getScanResults(this)));
 	}
@@ -85,11 +91,13 @@ public class SignalsActivity extends Activity{
 	 * set the function of Quit button.
 	 * exits the application.
 	 */
-	public void onClickQuit(View V) {
+	public void onClickQuit() {
 		finish();
+		
 		Intent intent = new Intent(Intent.ACTION_MAIN);
 		intent.addCategory(Intent.CATEGORY_HOME);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		
 		startActivity(intent);
 	}
 	
@@ -106,11 +114,16 @@ public class SignalsActivity extends Activity{
 		//-- get saved signals and compare to current signals..
 		ArrayList<Signal> savedListSignal = StorageManager.loadSignals();
 		
-		compareListSignal(scanListSignal, savedListSignal);
-		
+		setLocation(scanListSignal, savedListSignal);
+		//set list view
 		final ListView listView = (ListView) findViewById(R.id.listview_signal);
 		listView.setAdapter(new SignalBaseAdapter(this,scanListSignal));
+	
 		/*
+		 * DON'T CARE 
+		 * It's just for the next release
+		 * 
+		 * 
 		//set on item click
         listView.setOnItemClickListener(new OnItemClickListener() {
         	@Override
@@ -135,8 +148,9 @@ public class SignalsActivity extends Activity{
 	 * compare between saved WIFI signals and caught WIFI signals. 
 	 * if they are the same change place of this signal to place of saved signals.
 	 */
-	public void compareListSignal(ArrayList<Signal> savedListSignal, ArrayList<Signal> scanListSignal) { 
-    	for(int i=0; i< savedListSignal.size(); i++) {
+	public void setLocation(ArrayList<Signal> savedListSignal, ArrayList<Signal> scanListSignal) { 
+    	
+		for(int i=0; i< savedListSignal.size(); i++) {
     		for(int j=0; j< scanListSignal.size(); j++) {
     			if(savedListSignal.get(i).getBSSID().equals(scanListSignal.get(j).getBSSID())) {
     				savedListSignal.get(i).setPlace(scanListSignal.get(j).getPlace());
@@ -156,18 +170,24 @@ public class SignalsActivity extends Activity{
 	private String determineLocate(ArrayList<Signal> scanSignal) {
 		
 		String locationDetail=DEFAULT_LOCATION_NAME;
-		Location root=StorageManager.loadLocation();
-		ArrayList<Location> locationsSaved =root.getAll();
-		int markForLocation=0;
-		for(int i=0;i< locationsSaved.size(); i++) {
-			int markForThisLocation= locationsSaved.get(i).compareToOtherListSignals(scanSignal);
-			if((markForThisLocation>markForLocation)&&(markForThisLocation>MINIMUM_NUMBER_OF_THE_SAME_SIGNAL)) {
-				locationDetail=locationsSaved.get(i).printInfo();
-				markForLocation=markForThisLocation;
+		
+		Location data=StorageManager.loadLocation();
+		ArrayList<Location> locationsSaved =data.getLocationList();
+		int score = 0;
+		for(int i = 0;i< locationsSaved.size(); i++) {
+			int ratingScore = locationsSaved.get(i).ratingBasedSignal(scanSignal);
+			if((ratingScore > score)&&(ratingScore > MINIMUM_NUMBER_OF_THE_SAME_SIGNAL)) {
+				locationDetail = locationsSaved.get(i).printInfo();
+				score=ratingScore;
 			}
 		}
-		//-- Remove string of root location ("All location") ----
-		locationDetail=locationDetail.substring(root.toString().length());
+		
+		/*DON'T CARE
+		 * it's just some draft code.
+		 * -- Remove string of "root" location ("All location") ----
+		 */
+		//locationDetail=locationDetail.substring(data.toString().length());
+		
 		return ("Current location: "+locationDetail);
 	}
 	

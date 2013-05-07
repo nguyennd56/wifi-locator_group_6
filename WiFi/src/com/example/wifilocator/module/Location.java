@@ -13,59 +13,70 @@ import java.util.ArrayList;
 public class Location implements Serializable,Component{
 
 	private static final long serialVersionUID = 1L; //default id for serialization.
+	private final static int BASE_SCORE = 0;
+	
+	
 	//----------variables---------.
-	private String placeName;	
-	private ArrayList<Signal> associatedSignals;
+	private String location;	
+	private ArrayList<Signal> basedSignal;
+	
 	//--------- variable for Component interface--------
 	private ArrayList<Component> component;
-	private Component parent;
+	private Component parentLocation;
 
 	
 	
 	//----------Constructor---------.
 	public Location(String _placeName,ArrayList<Signal> _associatedSignals) {
-		placeName=_placeName;
-		associatedSignals=_associatedSignals;
+		location=_placeName;
+		basedSignal=_associatedSignals;
 		component= new ArrayList<Component>();
-		parent= null;
+		parentLocation= null;
 	}
 	
 	//--------Functions--------.
 	
 	/**
-	 * @param _locationDetail
+	 * @param locationName
 	 */
-	public void setPlaceName (String _locationDetail) {
-		placeName= _locationDetail;
+	public void setLocationName (String locationName) {
+		this.location= locationName;
 	}
 	
-	public void associatedSignal(ArrayList<Signal> _associatedSignals) {
-		associatedSignals = _associatedSignals;
+	public void setBasedSignal(ArrayList<Signal> basedSignal) {
+		this.basedSignal = basedSignal;
 	}
 	
 	
-	public String getPlaceName() {
-		return placeName;
+	public String getLocationName() {
+		return this.location;
 	}
 	
 	
 	/**
-	 * this function compare associated Signals of this Location with Signals of current location.
-	 *  To measure the relief of this location.
-	 *  using isTrueForLoacation function of class Signals to know number of the same signals.
-	 *  the more the same signals, the more rank of relief.
-	 *  
+	 * @describe : compare the list signal which scan with the baseListSignal of location
+	 * 			   + criteria: base on the each signal on list,
+	 * 				           each signal is equal then score will increase by 1 point
+	 * 			   + best location's score will be shown. 
 	 * @param listSignals : 
-	 * @return the rank of relief.
+	 * @return score
 	 */
-	public int compareToOtherListSignals(ArrayList<Signal> listSignals) {
-		int rankForLocationDeterminant=0;
+	public int ratingBasedSignal(ArrayList<Signal> listSignals) {
+		int ratingScore = BASE_SCORE;
+		//compare each signal on list with all base signal
 		for(int i=0; i<listSignals.size(); i++){
-			for(int j=0; j<associatedSignals.size();j++) {
-				if(listSignals.get(i).equals(associatedSignals.get(j))) rankForLocationDeterminant++;
+			for(int j=0; j<basedSignal.size();j++) {
+				
+				if(listSignals.get(i).equals(basedSignal.get(j))){
+					ratingScore = increaseScore(ratingScore);
+				}
 			}
 		}
-		return rankForLocationDeterminant;
+		return ratingScore;
+	}
+	
+	private int increaseScore(int score){
+		return score++;
 	}
 	
 	
@@ -75,19 +86,19 @@ public class Location implements Serializable,Component{
 	 * this function to convert an ArrayList<Component> from getAllOfsping function to an ArrayList<Location>.
 	 */
 
-	public ArrayList<Location> getAll() {
-		ArrayList<Location> listAllLocation= new ArrayList<Location>();
-		ArrayList<Component> listAllcomponent= getAllOfspings();
-		
-		for(int i =0; i< listAllcomponent.size(); i++){
-			listAllLocation.add((Location)listAllcomponent.get(i));
+	public ArrayList<Location> getLocationList() {
+		ArrayList<Location> locations= new ArrayList<Location>();
+		ArrayList<Component> components= getAllOfspings();
+		//each component contains class of locations - has same level
+		for(int i =0; i< components.size(); i++){
+			locations.add((Location)components.get(i));
 		}
 		
-		return listAllLocation;
+		return locations;
 	}
 	
 	/**
-	 * this function to convert an ArrayList<Component> from getAllchildren function to an ArrayList<Location>.
+	 * @describe: return list of locations which has same "parent-location" 
 	 */
 	public ArrayList<Location> getLeafLocation() {
 
@@ -104,11 +115,11 @@ public class Location implements Serializable,Component{
 	
 	
 	/*
-	 * add a children.
+	 * add a "children-location"
 	 */
 	public void add(Component c) {
 		component.add(c);
-		((Location)c).parent= this;
+		((Location)c).parentLocation= this;
 	}
 	
 	/*
@@ -126,8 +137,8 @@ public class Location implements Serializable,Component{
 	 * the ancestor of all components.
 	 */
 	public Component getRoot() {
-		if(parent==null) return this;
-		return parent.getRoot();
+		if(parentLocation==null) return this;
+		return parentLocation.getRoot();
 	}
 	
 	
@@ -176,16 +187,16 @@ public class Location implements Serializable,Component{
 	 * get parent of this.
 	 */
 	public Component getParent() {
-		return parent;
+		return parentLocation;
 	}
 	/*
 	 * return a string of this name and all ancestor name.
 	 */
 	public String printInfo() {
-		if(parent==null) {
+		if(parentLocation==null) {
 			return (this.toString());
 		}
-		String allDetail = ((Location)parent).printInfo()+this.toString();
+		String allDetail = ((Location)parentLocation).printInfo()+this.toString();
 		return allDetail;
 	}
 	
@@ -207,7 +218,7 @@ public class Location implements Serializable,Component{
 		return string;
 	}
 	public String toString() {
-		return " "+placeName+".";
+		return " "+location+".";
 	}
 
 }
