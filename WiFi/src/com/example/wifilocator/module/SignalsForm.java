@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * this class for making listView of wifi signals.
+ * this class for making listView of WIFI signals.
  * generated from Signals object.
  */
 

@@ -27,7 +27,7 @@ public class LocationFormEdit extends BaseAdapter{
 	private LayoutInflater l_Inflater;
 	private Integer img= Integer.valueOf(com.example.wifilocator_rebuild.R.drawable.fi_scan);
 	
-	//contructor
+	//constructor
 	public LocationFormEdit(Context context, ArrayList<Location> results) {
 		itemDetailsrrayList = results;
 		l_Inflater = LayoutInflater.from(context);
