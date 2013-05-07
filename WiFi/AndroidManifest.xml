@@ -18,7 +18,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme" >
         <activity
-            android:name="com.example.wifilocator_rebuild.StartUp"
+            android:name="com.example.wifilocator.activity.StartUp"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +27,12 @@
             </intent-filter>
         </activity>
         
-        <activity   android:name="com.example.wifilocator_rebuild.Tab" />
-        <activity 	android:name="com.example.wifilocator_rebuild.SignalsActivity"/>
-        <activity	android:name="com.example.wifilocator_rebuild.OnlineActivity"/>
-        <activity	android:name="com.example.wifilocator_rebuild.LocationsActivity"/>
-        <activity	android:name="com.example.wifilocator_rebuild.EditSignalPlaceActivity"/>
-         <activity	android:name="com.example.wifilocator_rebuild.AddCurrentPlaceActivity"/>
+        <activity   android:name="com.example.wifilocator.activity.Tab" />
+        <activity 	android:name="com.example.wifilocator.activity.SignalsActivity"/>
+        <activity	android:name="com.example.wifilocator.activity.OnlineActivity"/>
+        <activity	android:name="com.example.wifilocator.activity.LocationsActivity"/>
+        <activity	android:name="com.example.wifilocator.activity.EditSignalPlaceActivity"/>
+         <activity	android:name="com.example.wifilocator.activity.placeManipulateActivity"/>
 
     </application>
 

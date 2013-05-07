@@ -16,7 +16,7 @@
     <string name="lineseparator">____________________________________________________________________________________________________________________________________</string>
     <string name="todo">TODO</string>
     <string name="online_tab_text">This Tab for online services management</string>
-    <string name="add_location">add here</string>
+    <string name="add_location">add</string>
     <string name="remove_location">remove</string>
     <string name="place_name">Add your current place name here!</string>
     <string name="edit_location">edit</string>
