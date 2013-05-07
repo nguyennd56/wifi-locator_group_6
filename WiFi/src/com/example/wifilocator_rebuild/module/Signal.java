@@ -1,11 +1,11 @@
 package com.example.wifilocator_rebuild.module;
-
 import java.io.Serializable;
 
 
 public class Signal  implements Serializable{
 	/**
-	 * new class of wifi signals.
+	 * @category Object Signal (of wifi)
+	 * 
 	 * has variable of basic component of a wifi signals.
 	 * implements Serializable to save and load to internal storage.
 	 */
@@ -19,10 +19,14 @@ public class Signal  implements Serializable{
 	private String rate;
 	
 	
+
 	//-----------constructor---------
 	public Signal(){
 		super();
 		}
+	/*
+	 * 
+	 */
 	public Signal(int strength, String SSID, String _BSSID,String name){
 		super();
 		this.strength=strength;

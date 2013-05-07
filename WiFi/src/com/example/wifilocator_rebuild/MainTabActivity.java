@@ -14,14 +14,13 @@ public class MainTabActivity extends TabActivity {
 	 * each tab contain an other activity.
 	 */
 	
-	
+	private TabHost tabHost = getTabHost();
     //-- Called when the activity is first created. 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_tabs_layout);
         
-        TabHost tabHost = getTabHost();
         
         // Tab for Signals
         TabSpec Signalspec = tabHost.newTabSpec("Signals");
@@ -46,5 +45,7 @@ public class MainTabActivity extends TabActivity {
         tabHost.addTab(Signalspec); // Adding Signals tab
         tabHost.addTab(Locationspec); // Adding Locations tab
         tabHost.addTab(Onlinespec); // Adding Online tab
-    }
+        
+        
+        }
 }

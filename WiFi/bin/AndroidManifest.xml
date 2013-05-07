@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wifi"
+    package="com.example.wifilocator_rebuild"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-    
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme" >
         <activity
-            android:name="com.example.wifi.StartUp"
+            android:name="com.example.wifilocator_rebuild.StartUp"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,47 +26,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       
-        <activity
-            android:name="com.example.wifi.Menu"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="com.example.wifi.MENU" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         
-        <activity
-            android:name="com.example.wifi.ListSignal"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="com.example.wifi.LISTSIGNAL" />
+        <activity   android:name="com.example.wifilocator_rebuild.MainTabActivity" />
+        <activity 	android:name="com.example.wifilocator_rebuild.SignalsActivity"/>
+        <activity	android:name="com.example.wifilocator_rebuild.OnlineActivity"/>
+        <activity	android:name="com.example.wifilocator_rebuild.LocationsActivity"/>
+        <activity	android:name="com.example.wifilocator_rebuild.EditSignalPlaceActivity"/>
+         <activity	android:name="com.example.wifilocator_rebuild.AddCurrentPlaceActivity"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>        
-        
-        <activity
-            android:name="com.example.wifi.Label"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="com.example.wifi.LABEL" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        
-        <activity
-            android:name="com.example.wifi.Edit"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="com.example.wifi.EDIT" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-    
     </application>
 
 </manifest>

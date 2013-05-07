@@ -19,18 +19,20 @@ public class WifiScanner{
 	 * using many class of android wifi library to ScanResult and convert them to Signals object.
 	 * return a ArrayList of Signals objects.
 	 */
-	public static ArrayList<Signal> getScanResults(Activity currentActivity){
-		WifiManager mainWifi = (WifiManager) currentActivity.getSystemService(Context.WIFI_SERVICE);
-		WifiReceiver receiverWifi = new WifiReceiver();
-		currentActivity.registerReceiver(receiverWifi, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+	
+	
+	public static ArrayList<Signal> getScanResults(Activity activity){
+		WifiManager wifiManager = (WifiManager) activity.getSystemService(Context.WIFI_SERVICE);
+		WifiReceiver wifiReceiver = new WifiReceiver();
+		activity.registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
 	    //--check if wifi is off then set it to on state
-		mainWifi = (WifiManager)currentActivity.getSystemService(Context.WIFI_SERVICE);
-		if(!mainWifi.isWifiEnabled()){
-			mainWifi.setWifiEnabled(true);
+		wifiManager = (WifiManager)activity.getSystemService(Context.WIFI_SERVICE);
+		if(!wifiManager.isWifiEnabled()){
+			wifiManager.setWifiEnabled(true);
 		}
 		//start scan
-	    mainWifi.startScan();
-	    List<ScanResult> wifiList = mainWifi.getScanResults();
+	    wifiManager.startScan();
+	    List<ScanResult> wifiList = wifiManager.getScanResults();
 
 		ArrayList<Signal> signals = new ArrayList<Signal>();
 		Signal signal;
@@ -52,7 +54,9 @@ public class WifiScanner{
 
 class WifiReceiver extends BroadcastReceiver {
 	/*
+	 * 
 	 * (non-Javadoc)
+	 * 
 	 * @see android.content.BroadcastReceiver#onReceive(android.content.Context, android.content.Intent)
 	 */
         public void onReceive(Context c, Intent intent) {
