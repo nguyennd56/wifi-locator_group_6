@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
- * this activity to show all Wifi signals surrounding,
+ * this activity to show all WIFI signals surrounding,
  * show the current location
  * allow to add location.
  */
