@@ -3,7 +3,7 @@ package com.example.wifilocator.activity;
 import java.util.ArrayList;
 
 import com.example.wifilocator.module.Location;
-import com.example.wifilocator.module.LocationForm;
+import com.example.wifilocator.module.LocationBaseAdapter;
 import com.example.wifilocator.module.Signal;
 import com.example.wifilocator.module.StorageManager;
 import com.example.wifilocator_rebuild.R;
@@ -56,7 +56,7 @@ public class placeManipulateActivity extends Activity {
 	public void setListView(Location location) {
 		ArrayList<Location> leafLocation= location.getLeafLocation();
 		final ListView listView = (ListView) findViewById(R.id.listview_add_location);
-		listView.setAdapter(new LocationForm(this,leafLocation));
+		listView.setAdapter(new LocationBaseAdapter(this,leafLocation));
 		//set on item click
 		listView.setOnItemClickListener(new OnItemClickListener() {
         	@Override

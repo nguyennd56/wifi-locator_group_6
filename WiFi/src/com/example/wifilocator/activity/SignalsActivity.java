@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.example.wifilocator.module.Location;
 import com.example.wifilocator.module.Signal;
-import com.example.wifilocator.module.SignalsForm;
+import com.example.wifilocator.module.SignalBaseAdapter;
 import com.example.wifilocator.module.StorageManager;
 import com.example.wifilocator.module.WifiScanner;
 import com.example.wifilocator_rebuild.R;
@@ -26,17 +26,12 @@ public class SignalsActivity extends Activity{
 
 	
 	//------variable -------
-<<<<<<< HEAD:WiFi/src/com/example/wifilocator/activity/SignalsActivity.java
-	public final static String DEFAULT_LOCATION_NAME= " you are at an unknow place";
-	public final static int    MINIMUM_NUMBER_OF_THE_SAME_SIGNAL=2;
 	
-	private TextView Location;   
-=======
+	
 	public final static String DEFAULT_LOCATION_NAME = " you are at an unknow place";
 	public final static int MINIMUM_NUMBER_OF_THE_SAME_SIGNAL = 2;
-	transient TextView Location;   
->>>>>>> 8dbcceac2fad6930b1a9616d7b61890fb28f4a76:WiFi/src/com/example/wifilocator_rebuild/SignalsActivity.java
 	
+	private TextView Location;   
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +109,7 @@ public class SignalsActivity extends Activity{
 		compareListSignal(scanListSignal, savedListSignal);
 		
 		final ListView listView = (ListView) findViewById(R.id.listview_signal);
-		listView.setAdapter(new SignalsForm(this,scanListSignal));
+		listView.setAdapter(new SignalBaseAdapter(this,scanListSignal));
 		/*
 		//set on item click
         listView.setOnItemClickListener(new OnItemClickListener() {

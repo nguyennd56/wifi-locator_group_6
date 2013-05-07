@@ -12,6 +12,7 @@ public class Signal  implements Serializable{
 
 	private static final long serialVersionUID = 1L;  //default id for serialization.
 	private static final int MAX_ACCEPTABLE_STRENGTH_DIFFIRENTCE=10;
+	
 	//-----------variables----------
 	private int strength;
 	private String SSID;
@@ -23,15 +24,15 @@ public class Signal  implements Serializable{
 	//-----------constructor---------
 	public Signal(){
 		super();
-		}
+	}
 	
 	//constructor with parameters
-	public Signal(int strength, String SSID, String _BSSID,String name){
+	public Signal(int strength, String SSID, String BSSID,String name){
 		super();
 		this.strength=strength;
-		this.place=name;this.
-		SSID=SSID; this.
-		BSSID=_BSSID;
+		this.place=name;
+		this.SSID=SSID;
+		this.BSSID=BSSID;
 	}
 	
 	//-----------functions------------
@@ -39,35 +40,24 @@ public class Signal  implements Serializable{
 	//.........set functions.........
 	public void setStrength(int strength){
 		this.strength=strength;
-<<<<<<< HEAD:WiFi/src/com/example/wifilocator/module/Signal.java
-		}
+	}
+	public void setPlace( Signal signal) {
+		this.place= signal.place;
+	}
 	public void setPlace(String name){
 		this.place = name;}
 	public void setSSID(String SSID){this.SSID = SSID;
 	}
 	public void setBSSID(String BSSID){
 		this.BSSID = BSSID;
-		}
+	}
 	public void setRate(String rate){
-		this.rate=rate;}
-=======
-	}
-	public void setPlace(String _name){
-		this.place = _name;}
-	public void setSSID(String _SSID){this.SSID = _SSID;
-	}
-	public void setBSSID(String _BSSID){
-		this.BSSID = _BSSID;
+		this.rate= rate;
 	}
 	
-	public void setRate(String _rate){
-		this.rate= _rate;
+	public int getStrength(){
+		return this.strength;
 	}
->>>>>>> 8dbcceac2fad6930b1a9616d7b61890fb28f4a76:WiFi/src/com/example/wifilocator_rebuild/module/Signal.java
-	public int getStrength(){return this.strength;
-	}
-	
-	//........get functions...........
 	public String getPlace(){
 		return this.place;}
 	public String getSSID(){
@@ -76,11 +66,10 @@ public class Signal  implements Serializable{
 	public String getBSSID(){
 		return this.BSSID;
 		}
-	public String getRate(){return this.rate;
+	public String getRate(){
+		return this.rate;
 	}
-	public void getPlace( Signal signal) {
-		this.place= signal.place;
-	}
+	
 	
 	
 	/*
@@ -96,7 +85,7 @@ public class Signal  implements Serializable{
 				&&( Math.abs(this.strength - otherSignal.strength) < MAX_ACCEPTABLE_STRENGTH_DIFFIRENTCE) );
 	} 
 	
-	
+	@Override
 	public String toString(){
 		return String.format(this.SSID+"\t\t Strength:"+ this.strength + "t["+this.place+"]");
 	}
