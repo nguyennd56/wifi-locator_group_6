@@ -8,6 +8,9 @@
 package com.example.wifilocator_rebuild;
 
 public final class R {
+    public static final class array {
+        public static final int device_states=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -22,69 +25,71 @@ public final class R {
         public static final int fi_scan=0x7f020002;
         public static final int hi_func=0x7f020003;
         public static final int ic_launcher=0x7f020004;
-        public static final int icon_photos_tab=0x7f020005;
-        public static final int icon_songs_tab=0x7f020006;
-        public static final int icon_videos_tab=0x7f020007;
-        public static final int level_0_poor=0x7f020008;
-        public static final int level_1_poor=0x7f020009;
-        public static final int level_2_poor=0x7f02000a;
-        public static final int level_3_fair=0x7f02000b;
-        public static final int level_4_good=0x7f02000c;
-        public static final int level_5_excellent=0x7f02000d;
-        public static final int load_0=0x7f02000e;
-        public static final int load_1=0x7f02000f;
-        public static final int load_2=0x7f020010;
-        public static final int load_3=0x7f020011;
-        public static final int load_4=0x7f020012;
-        public static final int load_5=0x7f020013;
-        public static final int load_6=0x7f020014;
-        public static final int load_7=0x7f020015;
-        public static final int load_8=0x7f020016;
-        public static final int photos_gray=0x7f020017;
-        public static final int photos_white=0x7f020018;
-        public static final int picture=0x7f020019;
-        public static final int sc_func=0x7f02001a;
-        public static final int sc_funcs=0x7f02001b;
-        public static final int songs_gray=0x7f02001c;
-        public static final int songs_white=0x7f02001d;
-        public static final int videos_gray=0x7f02001e;
-        public static final int videos_white=0x7f02001f;
-        public static final int wi=0x7f020020;
-        public static final int wi_3=0x7f020021;
-        public static final int wi_3s=0x7f020022;
-        public static final int wi_4=0x7f020023;
+        public static final int icon_ow=0x7f020005;
+        public static final int icon_photos_tab=0x7f020006;
+        public static final int icon_songs_tab=0x7f020007;
+        public static final int icon_videos_tab=0x7f020008;
+        public static final int level_0_poor=0x7f020009;
+        public static final int level_1_poor=0x7f02000a;
+        public static final int level_2_poor=0x7f02000b;
+        public static final int level_3_fair=0x7f02000c;
+        public static final int level_4_good=0x7f02000d;
+        public static final int level_5_excellent=0x7f02000e;
+        public static final int load_0=0x7f02000f;
+        public static final int load_1=0x7f020010;
+        public static final int load_2=0x7f020011;
+        public static final int load_3=0x7f020012;
+        public static final int load_4=0x7f020013;
+        public static final int load_5=0x7f020014;
+        public static final int load_6=0x7f020015;
+        public static final int load_7=0x7f020016;
+        public static final int load_8=0x7f020017;
+        public static final int photos_gray=0x7f020018;
+        public static final int photos_white=0x7f020019;
+        public static final int picture=0x7f02001a;
+        public static final int sc_func=0x7f02001b;
+        public static final int sc_funcs=0x7f02001c;
+        public static final int songs_gray=0x7f02001d;
+        public static final int songs_white=0x7f02001e;
+        public static final int videos_gray=0x7f02001f;
+        public static final int videos_white=0x7f020020;
+        public static final int wi=0x7f020021;
+        public static final int wi_3=0x7f020022;
+        public static final int wi_3s=0x7f020023;
+        public static final int wi_4=0x7f020024;
     }
     public static final class id {
-        public static final int add_location=0x7f080018;
-        public static final int add_this_location=0x7f080002;
-        public static final int back_to_menu=0x7f08001a;
-        public static final int button1=0x7f080006;
-        public static final int button2=0x7f080007;
-        public static final int delete_location=0x7f08000c;
-        public static final int ed_edit_place=0x7f080005;
-        public static final int edit_location=0x7f08000f;
-        public static final int listview_add_location=0x7f080001;
-        public static final int listview_location=0x7f08000e;
-        public static final int listview_signal=0x7f080017;
-        public static final int location_back=0x7f080003;
-        public static final int location_edit_icon=0x7f08000a;
-        public static final int location_icon=0x7f080008;
-        public static final int location_name=0x7f08000d;
-        public static final int location_name_edit_shower=0x7f08000b;
-        public static final int location_name_shower=0x7f080009;
-        public static final int location_tv=0x7f080016;
-        public static final int menu_settings=0x7f08001d;
-        public static final int name=0x7f080011;
-        public static final int place_name_edit=0x7f080000;
-        public static final int progressBar1=0x7f08001c;
-        public static final int quit_r=0x7f08001b;
-        public static final int rate=0x7f080014;
-        public static final int scan_re=0x7f080019;
-        public static final int seperator=0x7f080015;
-        public static final int ssid=0x7f080012;
-        public static final int textView1=0x7f080010;
-        public static final int tv_SSID=0x7f080004;
-        public static final int wifi_level=0x7f080013;
+        public static final int add_location=0x7f090019;
+        public static final int add_this_location=0x7f090003;
+        public static final int back_to_menu=0x7f09001b;
+        public static final int button1=0x7f090007;
+        public static final int button2=0x7f090008;
+        public static final int delete_location=0x7f09000d;
+        public static final int ed_edit_place=0x7f090006;
+        public static final int edit_location=0x7f090010;
+        public static final int listview_add_location=0x7f090002;
+        public static final int listview_location=0x7f09000f;
+        public static final int listview_signal=0x7f090018;
+        public static final int location_back=0x7f090004;
+        public static final int location_edit_icon=0x7f09000b;
+        public static final int location_icon=0x7f090009;
+        public static final int location_name=0x7f09000e;
+        public static final int location_name_edit_shower=0x7f09000c;
+        public static final int location_name_shower=0x7f09000a;
+        public static final int location_tv=0x7f090017;
+        public static final int menu_settings=0x7f09001e;
+        public static final int name=0x7f090012;
+        public static final int place_name_edit=0x7f090000;
+        public static final int progressBar1=0x7f09001d;
+        public static final int quit_r=0x7f09001c;
+        public static final int rate=0x7f090015;
+        public static final int scan_re=0x7f09001a;
+        public static final int seperator=0x7f090016;
+        public static final int spinner1=0x7f090001;
+        public static final int ssid=0x7f090013;
+        public static final int textView1=0x7f090011;
+        public static final int tv_SSID=0x7f090005;
+        public static final int wifi_level=0x7f090014;
     }
     public static final class layout {
         public static final int add_current_place=0x7f030000;
@@ -99,7 +104,7 @@ public final class R {
         public static final int startup_layout=0x7f030009;
     }
     public static final class menu {
-        public static final int activity_main=0x7f070000;
+        public static final int activity_main=0x7f080000;
     }
     public static final class string {
         public static final int Cross=0x7f050017;
@@ -149,10 +154,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }
