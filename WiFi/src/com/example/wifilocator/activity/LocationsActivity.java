@@ -32,11 +32,12 @@ public class LocationsActivity extends Activity {
 
 	
 	//---variable--
-	Location root,clickedLocation;
-	TextView locationName;
-	Button Edit;
-	EditText editField;
-	boolean isEdit; // this for checking Edit button has been clicked or not.
+	private Location root;
+	private Location clickedLocation;
+	private TextView locationName;
+	private Button Edit;
+	private EditText editField;
+	private boolean isEdit; // this for checking Edit button has been clicked or not.
 	
 	//-----------
 	@Override
