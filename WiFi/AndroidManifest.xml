@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         
-        <activity   android:name="com.example.wifilocator_rebuild.MainTabActivity" />
+        <activity   android:name="com.example.wifilocator_rebuild.Tab" />
         <activity 	android:name="com.example.wifilocator_rebuild.SignalsActivity"/>
         <activity	android:name="com.example.wifilocator_rebuild.OnlineActivity"/>
         <activity	android:name="com.example.wifilocator_rebuild.LocationsActivity"/>

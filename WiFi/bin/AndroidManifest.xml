@@ -27,7 +27,11 @@
             </intent-filter>
         </activity>
         
+<<<<<<< HEAD
         <activity   android:name="com.example.wifilocator_rebuild.MainTabActivity" />
+=======
+        <activity   android:name="com.example.wifilocator_rebuild.Tab" />
+>>>>>>> 569e3e5c3b193ca1f8e714319f3a547c182350e1
         <activity 	android:name="com.example.wifilocator_rebuild.SignalsActivity"/>
         <activity	android:name="com.example.wifilocator_rebuild.OnlineActivity"/>
         <activity	android:name="com.example.wifilocator_rebuild.LocationsActivity"/>

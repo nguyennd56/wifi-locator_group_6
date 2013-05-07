@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public interface Component {
 	/**
+	 * 
 	 * Component pattern;
 	 * interface of tree structure.
 	 * search google of wikipedia to more detail. 

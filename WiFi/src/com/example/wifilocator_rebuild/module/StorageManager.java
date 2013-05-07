@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -224,4 +225,24 @@ public class StorageManager {
 
 	    return signalsList;
     }
+}
+
+
+/**
+ * copied from http://stackoverflow.com/questions/1194656/appending-to-an-objectoutputstream/1195078#1195078
+ * using to get capacity of appending for objectOutPutStream.
+ * write many object at many times.
+ */
+class AppendingObjectOutputStream extends ObjectOutputStream {
+
+  public AppendingObjectOutputStream(OutputStream out) throws IOException {
+    super(out);
+  }
+
+  @Override
+  protected void writeStreamHeader() throws IOException {
+    // do not write a header
+	  reset();
+  }
+
 }

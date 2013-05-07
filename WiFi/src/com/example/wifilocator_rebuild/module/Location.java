@@ -55,7 +55,7 @@ public class Location implements Serializable,Component{
 		int rankForLocationDeterminant=0;
 		for(int i=0; i<currentListSignals.size(); i++){
 			for(int j=0; j<associatedSignals.size();j++) {
-				if(currentListSignals.get(i).isTrueForLocation(associatedSignals.get(j))) rankForLocationDeterminant++;
+				if(currentListSignals.get(i).equals(associatedSignals.get(j))) rankForLocationDeterminant++;
 			}
 		}
 		return rankForLocationDeterminant;
