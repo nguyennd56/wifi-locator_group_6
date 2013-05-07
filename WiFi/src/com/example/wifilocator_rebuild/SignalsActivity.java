@@ -12,10 +12,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * this activity to show all Wifi signals surrounding,
@@ -29,7 +27,8 @@ public class SignalsActivity extends Activity{
 	//------variable -------
 	public final static String DEFAULT_LOCATION_NAME= " you are at an unknow place";
 	public final static int    MINIMUM_NUMBER_OF_THE_SAME_SIGNAL=2;
-	TextView Location;   
+	
+	private TextView Location;   
 	
 	
 	@Override
@@ -101,18 +100,21 @@ public class SignalsActivity extends Activity{
 	 */
 	public void setListView() {
 		//-- get current surrounding signals.
-		ArrayList<Signal> image_details = WifiScanner.getScanResults(this);
+		ArrayList<Signal> scanListSignal = WifiScanner.getScanResults(this);
 		//-- get saved signals and compare to current signals..
-		ArrayList<Signal> from_saving = StorageManager.loadSignals();
-		compare(image_details, from_saving);
-		final ListView lv1 = (ListView) findViewById(R.id.listview_signal);
-		lv1.setAdapter(new SignalsForm(this,image_details));
+		ArrayList<Signal> savedListSignal = StorageManager.loadSignals();
+		
+		compareListSignal(scanListSignal, savedListSignal);
+		
+		final ListView listView = (ListView) findViewById(R.id.listview_signal);
+		listView.setAdapter(new SignalsForm(this,scanListSignal));
+		/*
 		//set on item click
-        lv1.setOnItemClickListener(new OnItemClickListener() {
+        listView.setOnItemClickListener(new OnItemClickListener() {
         	@Override
         	public void onItemClick(AdapterView<?> a, View v, int position, long id) { 
         		
-        		Signal chosenSignal = (Signal)lv1.getItemAtPosition(position);
+        		Signal chosenSignal = (Signal)listView.getItemAtPosition(position);
             	try{
         			Class<?> ourClass = Class.forName("com.example.wifilocator_rebuild.EditSignalPlaceActivity");
         			Intent ourIntent = new Intent(SignalsActivity.this,ourClass);
@@ -123,6 +125,7 @@ public class SignalsActivity extends Activity{
         		}
         	}  
         });
+        */
 	}
 	
 	
@@ -130,11 +133,11 @@ public class SignalsActivity extends Activity{
 	 * compare between saved wifi signals and caught wifi signals. 
 	 * if they are the same change place of this signal to place of saved signals.
 	 */
-	public void compare(ArrayList<Signal> source, ArrayList<Signal> des) { 
-    	for(int i=0; i< source.size(); i++) {
-    		for(int j=0; j< des.size(); j++) {
-    			if(source.get(i).getSSID().equals(des.get(j).getSSID())) {
-    				source.get(i).setPlace(des.get(j).getPlace());
+	public void compareListSignal(ArrayList<Signal> savedListSignal, ArrayList<Signal> scanListSignal) { 
+    	for(int i=0; i< savedListSignal.size(); i++) {
+    		for(int j=0; j< scanListSignal.size(); j++) {
+    			if(savedListSignal.get(i).getBSSID().equals(scanListSignal.get(j).getBSSID())) {
+    				savedListSignal.get(i).setPlace(scanListSignal.get(j).getPlace());
     			}
     		}
     	}

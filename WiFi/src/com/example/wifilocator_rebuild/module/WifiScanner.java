@@ -1,5 +1,8 @@
 package com.example.wifilocator_rebuild.module;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,19 +23,41 @@ import android.net.wifi.WifiManager;
 
 public class WifiScanner{
 
-	public static ArrayList<Signal> getScanResults(Activity currentActivity){
-		WifiManager mainWifi = (WifiManager) currentActivity.getSystemService(Context.WIFI_SERVICE);
-		WifiReceiver receiverWifi = new WifiReceiver();
-		currentActivity.registerReceiver(receiverWifi, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-	   
+	private static WifiManager wifiManager;
+	private static WifiReceiver wifiReceiver;
+	
+	
+	public static ArrayList<Signal> getScanResults(Activity activity){
+		
+		setUp(activity);
+		
 		//--check if wifi is off then set it to on state
-		mainWifi = (WifiManager)currentActivity.getSystemService(Context.WIFI_SERVICE);
-		if(!mainWifi.isWifiEnabled()){
-			mainWifi.setWifiEnabled(true);
-		}
+		enableWifi(activity);
+		
 		//start scan
-	    mainWifi.startScan();
-	    List<ScanResult> wifiList = mainWifi.getScanResults();
+	    return getScan();
+	}
+	
+	
+	
+	
+	private static void setUp(Activity activity){
+		wifiManager = (WifiManager) activity.getSystemService(Context.WIFI_SERVICE);
+		wifiReceiver = new WifiReceiver();
+		activity.registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+	   
+	}
+	
+	private static void enableWifi(Activity activity){
+		wifiManager = (WifiManager)activity.getSystemService(Context.WIFI_SERVICE);
+		if(!wifiManager.isWifiEnabled()){
+			wifiManager.setWifiEnabled(true);
+		}
+	}
+	
+	private static ArrayList<Signal> getScan(){
+		wifiManager.startScan();
+	    List<ScanResult> wifiList = wifiManager.getScanResults();
 
 		ArrayList<Signal> signals = new ArrayList<Signal>();
 		Signal signal;
@@ -50,6 +75,8 @@ public class WifiScanner{
 		
 		return signals;
 	}
+	
+	
 }
 
 class WifiReceiver extends BroadcastReceiver {
@@ -59,4 +86,25 @@ class WifiReceiver extends BroadcastReceiver {
 	 */
         public void onReceive(Context c, Intent intent) {
         }
+}
+
+
+
+/**
+ * copied from http://stackoverflow.com/questions/1194656/appending-to-an-objectoutputstream/1195078#1195078
+ * using to get capacity of appending for objectOutPutStream.
+ * write many object at many times.
+ */
+class AppendingObjectOutputStream extends ObjectOutputStream {
+
+  public AppendingObjectOutputStream(OutputStream out) throws IOException {
+    super(out);
+  }
+
+  @Override
+  protected void writeStreamHeader() throws IOException {
+    // do not write a header
+	  reset();
+  }
+
 }

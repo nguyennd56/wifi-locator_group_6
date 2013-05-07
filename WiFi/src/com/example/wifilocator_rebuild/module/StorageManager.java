@@ -127,8 +127,7 @@ public class StorageManager {
                 FOLDER_NAME);
             File file = new File(directory, LOCATION_FILE_NAME);
             FileInputStream fIn = new FileInputStream(file);
-            @SuppressWarnings("resource")
-			ObjectInputStream in = new ObjectInputStream(fIn);
+            ObjectInputStream in = new ObjectInputStream(fIn);
             
             while (true) {
             	root=(Location)in.readObject();
@@ -214,8 +213,7 @@ public class StorageManager {
 	            FOLDER_NAME);
 	        File file = new File(directory, SIGNAL_FILE_NAME);
 	        FileInputStream fIn = new FileInputStream(file);
-	        @SuppressWarnings("resource")
-			ObjectInputStream in = new ObjectInputStream(fIn);
+	        ObjectInputStream in = new ObjectInputStream(fIn);
 	        while (true) {
 	            signalsList.add( (Signal) in.readObject());
 	        }

@@ -38,15 +38,15 @@ public class Signal  implements Serializable{
 	public void setStrength(int strength){
 		this.strength=strength;
 		}
-	public void setPlace(String _name){
-		this.place = _name;}
-	public void setSSID(String _SSID){this.SSID = _SSID;
+	public void setPlace(String name){
+		this.place = name;}
+	public void setSSID(String SSID){this.SSID = SSID;
 	}
-	public void setBSSID(String _BSSID){
-		this.BSSID = _BSSID;
+	public void setBSSID(String BSSID){
+		this.BSSID = BSSID;
 		}
-	public void setRate(String _rate){
-		this.rate=_rate;}
+	public void setRate(String rate){
+		this.rate=rate;}
 	public int getStrength(){return this.strength;
 	}
 	
@@ -59,8 +59,8 @@ public class Signal  implements Serializable{
 		return this.BSSID;}
 	public String getRate(){return this.rate;
 	}
-	public void getPlace( Signal _sig) {
-		this.place= _sig.place;
+	public void getPlace( Signal signal) {
+		this.place= signal.place;
 	}
 	
 	
