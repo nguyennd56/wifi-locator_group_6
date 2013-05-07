@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * this activity to show all Wifi signals surrounding,
+ * this activity to show all WIFI signals surrounding,
  * show the current location
  * allow to add location.
  */
@@ -26,10 +26,16 @@ public class SignalsActivity extends Activity{
 
 	
 	//------variable -------
+<<<<<<< HEAD:WiFi/src/com/example/wifilocator/activity/SignalsActivity.java
 	public final static String DEFAULT_LOCATION_NAME= " you are at an unknow place";
 	public final static int    MINIMUM_NUMBER_OF_THE_SAME_SIGNAL=2;
 	
 	private TextView Location;   
+=======
+	public final static String DEFAULT_LOCATION_NAME = " you are at an unknow place";
+	public final static int MINIMUM_NUMBER_OF_THE_SAME_SIGNAL = 2;
+	transient TextView Location;   
+>>>>>>> 8dbcceac2fad6930b1a9616d7b61890fb28f4a76:WiFi/src/com/example/wifilocator_rebuild/SignalsActivity.java
 	
 	
 	@Override
@@ -39,7 +45,7 @@ public class SignalsActivity extends Activity{
 		setContentView(R.layout.signals_scan_layout);
 		Location= (TextView) findViewById(R.id.location_tv);
 		
-		//-- show all wifi signals and current location--
+		//-- show all WIFI signals and current location--
 		setListView(); 
 		Location.setText(determineLocate(WifiScanner.getScanResults(this)));
 	}
@@ -97,7 +103,7 @@ public class SignalsActivity extends Activity{
 	/**
 	 * make signals ListView.
 	 * using list of scanned signals to generate.
-	 * using saved signals to get place of wifi.
+	 * using saved signals to get place of WIFI.
 	 */
 	public void setListView() {
 		//-- get current surrounding signals.
@@ -131,7 +137,7 @@ public class SignalsActivity extends Activity{
 	
 	
 	/**
-	 * compare between saved wifi signals and caught wifi signals. 
+	 * compare between saved WIFI signals and caught WIFI signals. 
 	 * if they are the same change place of this signal to place of saved signals.
 	 */
 	public void compareListSignal(ArrayList<Signal> savedListSignal, ArrayList<Signal> scanListSignal) { 
