@@ -87,8 +87,10 @@ public class Location implements Serializable,Component{
 	 */
 
 	public ArrayList<Location> getLocationList() {
+		
 		ArrayList<Location> locations= new ArrayList<Location>();
 		ArrayList<Component> components= getAllOfspings();
+		
 		//each component contains class of locations - has same level
 		for(int i =0; i< components.size(); i++){
 			locations.add((Location)components.get(i));
@@ -169,6 +171,7 @@ public class Location implements Serializable,Component{
 	 * using preOder function to get them.
 	 */
 	public ArrayList<Component> getAllOfspings() {
+		
 		ArrayList<Component> allOfSping= new ArrayList<Component>();
 		preOrder(allOfSping,this);
 		return allOfSping;
@@ -177,6 +180,7 @@ public class Location implements Serializable,Component{
 	 * search wikipedia.com to more detail.
 	 */
 	public void preOrder(ArrayList<Component> allOfSping,Component root) {
+		
 		allOfSping.add(root);
 		for(int i=0; i< root.getAllChildren().size(); i++) {
 			preOrder(allOfSping,root.getChild(i));

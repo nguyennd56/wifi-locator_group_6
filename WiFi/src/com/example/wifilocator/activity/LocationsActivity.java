@@ -70,13 +70,13 @@ public class LocationsActivity extends Activity {
 
 		ArrayList<Location> allChildren= currentChoice.getLeafLocation();
 		locationName.setText(currentChoice.printInfo());
-		final ListView lv1 = (ListView) findViewById(R.id.listview_location);
-		lv1.setAdapter(new LocationBaseAdapter(this,allChildren));
+		final ListView listView = (ListView) findViewById(R.id.listview_location);
+		listView.setAdapter(new LocationBaseAdapter(this,allChildren));
 		//set on item click
-		lv1.setOnItemClickListener(new OnItemClickListener() {
+		listView.setOnItemClickListener(new OnItemClickListener() {
         	@Override
-        	public void onItemClick(AdapterView<?> a, View v, int position, long id) { 
-        		clickedLocation=(Location)lv1.getItemAtPosition(position);
+        	public void onItemClick(AdapterView<?> adapter, View view, int position, long id) { 
+        		clickedLocation=(Location)listView.getItemAtPosition(position);
         		setListView(clickedLocation);
         	}
 		});
@@ -91,13 +91,13 @@ public class LocationsActivity extends Activity {
 
 		ArrayList<Location> allChildren= currentChoice.getLeafLocation();
 		locationName.setText(currentChoice.printInfo());
-		final ListView lv1 = (ListView) findViewById(R.id.listview_location);
-		lv1.setAdapter(new EditableLocate(this,allChildren));
+		final ListView listView = (ListView) findViewById(R.id.listview_location);
+		listView.setAdapter(new EditableLocate(this,allChildren));
 		//set on item click
-		lv1.setOnItemClickListener(new OnItemClickListener() {
+		listView.setOnItemClickListener(new OnItemClickListener() {
         	@Override
-        	public void onItemClick(AdapterView<?> a, View v, int position, long id) { 
-        		clickedLocation=(Location)lv1.getItemAtPosition(position);
+        	public void onItemClick(AdapterView<?> adapter, View view, int position, long id) { 
+        		clickedLocation=(Location)listView.getItemAtPosition(position);
         		setListView((Location)clickedLocation.getParent());
         	}
 		});
@@ -156,7 +156,7 @@ public class LocationsActivity extends Activity {
 	 * set the function of back button.
 	 * change clickedLoction to it parent then setListView it.
 	 */
-	public void onClickBack(View v) {
+	public void onClickBack() {
 		if(clickedLocation.getParent()!=null) {
 			clickedLocation=(Location)clickedLocation.getParent();
 			setListView(clickedLocation);
@@ -176,7 +176,7 @@ public class LocationsActivity extends Activity {
 	 * change setListView to setListViewEdit when "edit" button clicked.
 	 * restore to setListView then save Location when "done". 
 	 */
-	public void onClickEdit(View v) {
+	public void onClickEdit() {
 		if(!isEdit){
 			isEdit=true;
 			setListViewEdit(clickedLocation);

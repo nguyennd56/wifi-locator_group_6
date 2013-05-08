@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 public class EditableLocate extends BaseAdapter{
 
-	final static Integer IMAGE= Integer.valueOf(com.example.wifilocator_rebuild.R.drawable.fi_scan);
+	final static Integer IMAGE = Integer.valueOf(com.example.wifilocator_rebuild.R.drawable.fi_scan);
 
 	
 	
@@ -56,15 +56,15 @@ public class EditableLocate extends BaseAdapter{
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		final ViewHolder holder;
-		if(convertView==null){
+		if(convertView == null){
 			//set ID viewHolder element
 				//set view
 			convertView = layoutInflater.inflate(com.example.wifilocator_rebuild.R.layout.location_form_edit, null);
 			holder = new ViewHolder();
 				//set id
-			holder.place_name= (TextView) convertView.findViewById(R.id.location_name_edit_shower);
-			holder.location_icon=(ImageView) convertView.findViewById(R.id.location_edit_icon);
-			holder.delete =(Button) convertView.findViewById(R.id.delete_location);
+			holder.place_name = (TextView) convertView.findViewById(R.id.location_name_edit_shower);
+			holder.location_icon =(ImageView) convertView.findViewById(R.id.location_edit_icon);
+			holder.delButton = (Button) convertView.findViewById(R.id.delete_location);
 			convertView.setTag(holder);
 		}else{
 			holder = (ViewHolder) convertView.getTag();
@@ -73,12 +73,12 @@ public class EditableLocate extends BaseAdapter{
 		holder.place_name.setText(locationList.get(position).getLocationName());
 		holder.location_icon.setImageResource(IMAGE);
 			//--- set click on Click of delete button---
-		holder.delete.setOnClickListener(new OnClickListener(){
+		holder.delButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
 				Location location = (Location) locationList.get(position);
 				location.getParent().remove(position);
-				holder.delete.setText("Deleted");
+				holder.delButton.setText("Deleted");
 			}
 		});
 
@@ -90,8 +90,8 @@ public class EditableLocate extends BaseAdapter{
 	 * set of all things will be shown at Edit Locations listView.
 	 */
 	static class ViewHolder{
-		TextView place_name;
-		ImageView location_icon;
-		Button delete;
+		private TextView place_name;
+		private ImageView location_icon;
+		private Button delButton;
 	}
 }
