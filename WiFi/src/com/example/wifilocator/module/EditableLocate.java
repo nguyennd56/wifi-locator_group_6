@@ -21,11 +21,8 @@ import android.widget.TextView;
  */
 
 public class EditableLocate extends BaseAdapter{
-
+	//variables
 	final static Integer IMAGE = Integer.valueOf(com.example.wifilocator_rebuild.R.drawable.fi_scan);
-
-	
-	
 	private static ArrayList<Location> locationList;
 	private LayoutInflater layoutInflater;
 	
@@ -66,7 +63,8 @@ public class EditableLocate extends BaseAdapter{
 			holder.location_icon =(ImageView) convertView.findViewById(R.id.location_edit_icon);
 			holder.delButton = (Button) convertView.findViewById(R.id.delete_location);
 			convertView.setTag(holder);
-		}else{
+		}
+		else{
 			holder = (ViewHolder) convertView.getTag();
 		}
 		//set content viewHolder element

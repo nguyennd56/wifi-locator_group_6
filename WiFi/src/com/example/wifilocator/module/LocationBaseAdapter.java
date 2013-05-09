@@ -19,12 +19,9 @@ import android.widget.TextView;
 
 public class LocationBaseAdapter extends BaseAdapter{
 
-	
 	private final static int DEFAULT_ID =Integer.valueOf(com.example.wifilocator_rebuild.R.drawable.fi_scan);
-	
-	
-	
-	//---variable----
+		
+	//---variables----
 	private static ArrayList<Location> locationList;
 	private LayoutInflater layoutInflater;
 	
@@ -69,8 +66,6 @@ public class LocationBaseAdapter extends BaseAdapter{
 		holder.setLocationIcon(DEFAULT_ID);
 		return convertView;
 	}
-	
-	
 }
 
 /*

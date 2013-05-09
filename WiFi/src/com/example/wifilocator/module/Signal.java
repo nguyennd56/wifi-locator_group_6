@@ -19,8 +19,7 @@ public class Signal  implements Serializable{
 	private String BSSID;
 	private String place;
 	private String rate;
-	
-	
+
 	//-----------constructor---------
 	public Signal(){
 		super();
@@ -69,9 +68,7 @@ public class Signal  implements Serializable{
 	public String getRate(){
 		return this.rate;
 	}
-	
-	
-	
+		
 	/*
 	 * this function compare this signal with a an other signal.
 	 * using SSID and strength of signals to determine if they are the same.

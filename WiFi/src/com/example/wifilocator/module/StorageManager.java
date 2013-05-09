@@ -21,14 +21,9 @@ import android.os.Environment;
 
 public class StorageManager {
 
-	
 	public final static String FOLDER_NAME	 =	"/MyFiles";
 	public final static String LOCATION_FILE_NAME = "locations.data";
-	public final static String SIGNAL_FILE_NAME	 = "signals.data";
-	
-	
-	
-	
+	public final static String SIGNAL_FILE_NAME	 = "signals.data";	
 	
 	/*
 	 * This function for saving location objects only.
@@ -36,20 +31,16 @@ public class StorageManager {
 	 */
 	public static void saveLocation( Location location) {
 		try{
-			//---SD Card Storage---
-			
-			
-			
+			//---SD Card Storage---			
             File file = new File(loadFileOnSDCard(), LOCATION_FILE_NAME);            
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             ObjectOutputStream objectOutputStream= new ObjectOutputStream(fileOutputStream);
             
-            
 			objectOutputStream.writeObject(location);
 			objectOutputStream.flush();
 			objectOutputStream.close();
-		}catch (IOException ioe)
-		{
+		}
+		catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
 		
@@ -76,10 +67,10 @@ public class StorageManager {
 		}
 		catch (EOFException e) {
 			e.printStackTrace();
-			}
+		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			}
+		}
 		catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
@@ -97,21 +88,20 @@ public class StorageManager {
 		
 		try{
 			//---SD Card Storage---
-			
-	        
+			        
 	            File file = new File(loadFileOnSDCard(), SIGNAL_FILE_NAME);
 	            
-	            FileOutputStream fOut = new FileOutputStream(file,true);
+	            FileOutputStream fileOuputStream = new FileOutputStream(file,true);
 	            
-	            ObjectOutputStream out= new AppendingObjectOutputStream(fOut);
+	            ObjectOutputStream objectOutputStream= new AppendingObjectOutputStream(fileOuputStream);
 	            
 	            
-				out.writeObject(aSignal);
-				out.close();
+				objectOutputStream.writeObject(aSignal);
+				objectOutputStream.close();
 			
-		}catch (IOException ioe)
+		}catch (IOException ioException)
 		{
-			ioe.printStackTrace();
+			ioException.printStackTrace();
 		}
          
 		
@@ -133,14 +123,14 @@ public class StorageManager {
 	            signalsList.add( (Signal) objectInputStream.readObject());
 	        }
 		}
-        catch (EOFException e) {
-			e.printStackTrace();
+        catch (EOFException exception) {
+			exception.printStackTrace();
 			}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
+		catch (ClassNotFoundException exception) {
+			exception.printStackTrace();
 			}
-		catch (IOException ioe) {
-			ioe.printStackTrace();
+		catch (IOException ioException) {
+			ioException.printStackTrace();
 		}
 
 	    return signalsList;
@@ -153,10 +143,7 @@ public class StorageManager {
         directory.mkdirs();
         return directory;
 	}
-	
-	
-	
-	
+
 	private static void activeFileLocation(){
 		try{
 			//---SD Card Storage---
@@ -173,9 +160,9 @@ public class StorageManager {
 	            objectOutputStream.flush();
 	            objectOutputStream.close();
             }
-        }catch (IOException ioe)
-    	{
-			ioe.printStackTrace();
+        }
+		catch (IOException ioExcepiton){
+			ioExcepiton.printStackTrace();
     	}
 	}
 	
@@ -193,9 +180,9 @@ public class StorageManager {
 	            objectOutputStream.writeObject(new Signal(000,"UNKNOW","UNKNOW","UNKNOW"));
 	            objectOutputStream.close();
             }
-        }catch (IOException ioe)
+        }catch (IOException ioException)
     	{
-			ioe.printStackTrace();
+			ioException.printStackTrace();
     	}
 		
 	}

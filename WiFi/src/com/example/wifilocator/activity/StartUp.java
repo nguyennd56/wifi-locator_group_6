@@ -18,14 +18,11 @@ import android.widget.ProgressBar;
  * Run when application start.
  */
 public class StartUp extends Activity {
-
-
-	
+	//variables
 	final static int DELAY_TIME = 5000;
 	
 	private ProgressBar progressBar;
 	private static WifiManager wifiManager;
-	
 	
 	//Method
 	@Override
@@ -36,9 +33,7 @@ public class StartUp extends Activity {
 		setUp();
 		
 		enableWifi();
-		 
-        
-
+		
         //---delay time to ensure that WiFi is on after enabling
         new Thread(new Runnable(){ 
              public void run(){ 
@@ -50,9 +45,6 @@ public class StartUp extends Activity {
                  runTabActivity();
             }
         }).start(); 
-		
-		
-		
 	}
 
 	@Override
@@ -63,12 +55,10 @@ public class StartUp extends Activity {
 	}
 	
 	private void setUp(){
-		
 		setContentView(R.layout.startup_layout);
 		progressBar = (ProgressBar) findViewById(R.id.progressBar1); 
 		wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 	}
-	
 	
 	private static void enableWifi(){
 		if(!wifiManager.isWifiEnabled()){
@@ -101,10 +91,9 @@ public class StartUp extends Activity {
 		try { 
             //---simulate doing some work--- 
             Thread.sleep (DELAY_TIME); 
-       } catch (InterruptedException e) 
-       { 
+		}
+		catch (InterruptedException e) { 
             e.printStackTrace(); 
        }
-	}
-	
+	}	
 }

@@ -45,8 +45,8 @@ public class SignalBaseAdapter extends BaseAdapter{
 	private LayoutInflater layoutInflater;
 	//constructor
 	public SignalBaseAdapter(Context context, ArrayList<Signal> results) {
-			listSignal = results;
-			layoutInflater = LayoutInflater.from(context);
+		listSignal = results;
+		layoutInflater = LayoutInflater.from(context);
 	}
 	
 	@Override
@@ -85,13 +85,13 @@ public class SignalBaseAdapter extends BaseAdapter{
 		//------------ set wifi level image of signals basing on its strength.---------------
 		int rankSignalStrength= ((listSignal.get(position).getStrength()+100)/10);
 		switch(rankSignalStrength){
-		case POOR_1: 		icon = iconId[0];	rate = "level: poor";		break;
-		case POOR_2: 		icon = iconId[1];	rate = "level: poor";		break;
-		case POOR_3: 		icon = iconId[2];	rate = "level: poor";		break;
-		case FAIR: 			icon = iconId[3];	rate = "level: fair";		break;
-		case GOOD: 			icon = iconId[4];	rate = "level: good";		break;
-		case EXCELLENT: 	icon = iconId[5];	rate = "level: excellent";	break;
-		default:			icon = iconId[0];	rate = "level: unknown";	break;
+			case POOR_1: 		icon = iconId[0];	rate = "level: poor";		break;
+			case POOR_2: 		icon = iconId[1];	rate = "level: poor";		break;
+			case POOR_3: 		icon = iconId[2];	rate = "level: poor";		break;
+			case FAIR: 			icon = iconId[3];	rate = "level: fair";		break;
+			case GOOD: 			icon = iconId[4];	rate = "level: good";		break;
+			case EXCELLENT: 	icon = iconId[5];	rate = "level: excellent";	break;
+			default:			icon = iconId[0];	rate = "level: unknown";	break;
 		}
 		ssid = listSignal.get(position).getSSID();
 		name = listSignal.get(position).getPlace();
@@ -100,9 +100,6 @@ public class SignalBaseAdapter extends BaseAdapter{
 		
 		return convertView;
 	}
-	
-	
-	
 	
 	/*
 	 * set of all things will be shown at Signals listView.

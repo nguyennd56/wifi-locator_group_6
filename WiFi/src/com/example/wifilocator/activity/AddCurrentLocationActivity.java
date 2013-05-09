@@ -25,9 +25,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class AddCurrentLocationActivity extends Activity {
 
-	//-- variable---
-	
-	
+	//-- variables---
 	private Location defaultLocation;
 	private Location chosenLocation;
 	private EditText editName;
@@ -47,12 +45,12 @@ public class AddCurrentLocationActivity extends Activity {
 		
 		
 		//---- Listview location-----
-			//load saved location 
+		//load saved location 
 		defaultLocation=StorageManager.loadLocation();
-			// first we just consider chosenLocation as defaultLocation
+		// first we just consider chosenLocation as defaultLocation
 		catchSignal= (ArrayList<Signal>) getIntent().getSerializableExtra("currentSignals");
 		chosenLocation=defaultLocation;
-			//--- make listView of locations---
+		//--- make listView of locations---
 		setListView(defaultLocation);
 	}
 	
@@ -60,6 +58,7 @@ public class AddCurrentLocationActivity extends Activity {
 		ArrayList<Location> leafLocation= location.getLeafLocation();
 		final ListView listView = (ListView) findViewById(R.id.listview_add_location);
 		listView.setAdapter(new LocationBaseAdapter(this,leafLocation));
+		
 		//set on item click
 		listView.setOnItemClickListener(new OnItemClickListener() {
         	@Override
@@ -89,14 +88,12 @@ public class AddCurrentLocationActivity extends Activity {
 		//reset ListView
 		setListView(chosenLocation);
 		//---display file saved message---
-		Toast.makeText(getBaseContext(),
-				"Location saved successfully!"+defaultLocation.getSize()+"  "+defaultLocation.print(0),
-				Toast.LENGTH_SHORT).show();
+		Toast.makeText(getBaseContext(),"Location saved successfully!"+defaultLocation.getSize()
+				+"  "+defaultLocation.print(0),Toast.LENGTH_SHORT).show();
 
 		//---clears the EditText---
 		editName.setText("");
 	}
-	
-	
+		
 }
 

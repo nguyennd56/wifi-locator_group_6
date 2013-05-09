@@ -65,9 +65,9 @@ public class EditSignalPlaceActivity extends Activity{
 			Class<?> Menuclass = Class.forName("com.example.wifilocator_rebuild.MainTabActivity");
 			Intent backToMenuActivity = new Intent(EditSignalPlaceActivity.this,Menuclass);
 			startActivity(backToMenuActivity);
-			}
-			catch(ClassNotFoundException e){
+		}
+		catch(ClassNotFoundException e){
 				e.printStackTrace();
-			}
+		}
 	}
 }

@@ -15,7 +15,6 @@ public class Location implements Serializable,Component{
 	private static final long serialVersionUID = 1L; //default id for serialization.
 	private final static int BASE_SCORE = 0;
 	
-	
 	//----------variables---------.
 	private String location;	
 	private ArrayList<Signal> basedSignal;
@@ -24,8 +23,6 @@ public class Location implements Serializable,Component{
 	private ArrayList<Component> component;
 	private Component parentLocation;
 
-	
-	
 	//----------Constructor---------.
 	public Location(String _placeName,ArrayList<Signal> _associatedSignals) {
 		location=_placeName;
@@ -72,6 +69,7 @@ public class Location implements Serializable,Component{
 				}
 			}
 		}
+		
 		return ratingScore;
 	}
 	
@@ -110,12 +108,9 @@ public class Location implements Serializable,Component{
 		}
 		return leafLocation;
 	}
-	
-	
+		
 	//------------------ Override functions of Component Interface-------------------.
 
-	
-	
 	/*
 	 * add a "children-location"
 	 */

@@ -22,10 +22,9 @@ import android.net.wifi.WifiManager;
 
 
 public class WifiScanner{
-
+	//static variables
 	private static WifiManager wifiManager;
 	private static WifiReceiver wifiReceiver;
-	
 	
 	public static ArrayList<Signal> getScanResults(Activity activity){
 		
@@ -38,14 +37,10 @@ public class WifiScanner{
 	    return getScan();
 	}
 	
-	
-	
-	
 	private static void setUp(Activity activity){
 		wifiManager = (WifiManager) activity.getSystemService(Context.WIFI_SERVICE);
 		wifiReceiver = new WifiReceiver();
-		activity.registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-	   
+		activity.registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));   
 	}
 	
 	private static void enableWifi(Activity activity){
@@ -75,8 +70,6 @@ public class WifiScanner{
 		
 		return signals;
 	}
-	
-	
 }
 
 class WifiReceiver extends BroadcastReceiver {
@@ -84,11 +77,9 @@ class WifiReceiver extends BroadcastReceiver {
 	 * (non-Javadoc)
 	 * @see android.content.BroadcastReceiver#onReceive(android.content.Context, android.content.Intent)
 	 */
-        public void onReceive(Context c, Intent intent) {
-        }
+	public void onReceive(Context c, Intent intent) {
+    }
 }
-
-
 
 /**
  * copied from http://stackoverflow.com/questions/1194656/appending-to-an-objectoutputstream/1195078#1195078
@@ -97,14 +88,14 @@ class WifiReceiver extends BroadcastReceiver {
  */
 class AppendingObjectOutputStream extends ObjectOutputStream {
 
-  public AppendingObjectOutputStream(OutputStream out) throws IOException {
-    super(out);
-  }
+	public AppendingObjectOutputStream(OutputStream out) throws IOException {
+		super(out);
+	}
 
-  @Override
-  protected void writeStreamHeader() throws IOException {
+	@Override
+  	protected void writeStreamHeader() throws IOException {
     // do not write a header
-	  reset();
-  }
+		reset();
+	}
 
 }

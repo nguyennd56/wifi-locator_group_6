@@ -56,6 +56,7 @@ public class LocationsActivity extends Activity {
 		editField= new EditText(this);
 		editField.setTextSize(20);
 		editField.setLines(4);
+	
 		//--- make ListView of Location---
 		setListView(root);
 	}
@@ -160,7 +161,8 @@ public class LocationsActivity extends Activity {
 		if(clickedLocation.getParent()!=null) {
 			clickedLocation=(Location)clickedLocation.getParent();
 			setListView(clickedLocation);
-		}else{
+		}
+		else{
 			Toast.makeText(getBaseContext(),
 					"Parent location is null"+clickedLocation.toString(),
 					Toast.LENGTH_SHORT).show();
@@ -181,13 +183,12 @@ public class LocationsActivity extends Activity {
 			isEdit=true;
 			setListViewEdit(clickedLocation);
 			Edit.setText("Done");
-		}else{
+		}
+		else{
 			isEdit=false;
 			setListView(clickedLocation);
 			Edit.setText("Edit");
 			StorageManager.saveLocation(root);
 		}
-	}
-	
-	
+	}	
 }
