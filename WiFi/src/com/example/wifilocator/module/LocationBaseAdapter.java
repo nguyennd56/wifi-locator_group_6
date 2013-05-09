@@ -38,9 +38,9 @@ public class LocationBaseAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public Object getItem(int arg0) {
+	public Object getItem(int argument) {
 		// TODO Auto-generated method stub
-		return locationList.get(arg0);
+		return locationList.get(argument);
 	}
 
 	@Override

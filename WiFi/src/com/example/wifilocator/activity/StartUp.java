@@ -1,6 +1,5 @@
 package com.example.wifilocator.activity;
 
-
 import com.example.wifilocator_rebuild.R;
 
 import android.net.wifi.WifiManager;
@@ -11,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ProgressBar;
-
 
 /**
  * First Activity of application.
@@ -72,8 +70,8 @@ public class StartUp extends Activity {
             Intent activity = new Intent(StartUp.this, Myclass);
             startActivity(activity);
         }
-		catch(ClassNotFoundException e){
-			e.printStackTrace();
+		catch(ClassNotFoundException exception){
+			exception.printStackTrace();
 		}
 	}
 	
@@ -92,8 +90,8 @@ public class StartUp extends Activity {
             //---simulate doing some work--- 
             Thread.sleep (DELAY_TIME); 
 		}
-		catch (InterruptedException e) { 
-            e.printStackTrace(); 
+		catch (InterruptedException exception) { 
+            exception.printStackTrace(); 
        }
 	}	
 }

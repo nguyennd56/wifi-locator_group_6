@@ -14,6 +14,7 @@ public class Location implements Serializable,Component{
 
 	private static final long serialVersionUID = 1L; //default id for serialization.
 	private final static int BASE_SCORE = 0;
+	private final static int FIRST_SIZE = 0;
 	
 	//----------variables---------.
 	private String location;	
@@ -61,10 +62,10 @@ public class Location implements Serializable,Component{
 	public int ratingBasedSignal(ArrayList<Signal> listSignals) {
 		int ratingScore = BASE_SCORE;
 		//compare each signal on list with all base signal
-		for(int i=0; i<listSignals.size(); i++){
-			for(int j=0; j<basedSignal.size();j++) {
+		for(int rowIndex=0; rowIndex<listSignals.size(); rowIndex++){
+			for(int columnIndex=0; columnIndex<basedSignal.size();columnIndex++) {
 				
-				if(listSignals.get(i).equals(basedSignal.get(j))){
+				if(listSignals.get(rowIndex).equals(basedSignal.get(columnIndex))){
 					ratingScore = increaseScore(ratingScore);
 				}
 			}
@@ -90,8 +91,8 @@ public class Location implements Serializable,Component{
 		ArrayList<Component> components= getAllOfspings();
 		
 		//each component contains class of locations - has same level
-		for(int i =0; i< components.size(); i++){
-			locations.add((Location)components.get(i));
+		for(int index =0; index< components.size(); index++){
+			locations.add((Location)components.get(index));
 		}
 		
 		return locations;
@@ -103,8 +104,8 @@ public class Location implements Serializable,Component{
 	public ArrayList<Location> getLeafLocation() {
 
 		ArrayList<Location> leafLocation= new ArrayList<Location>();
-		for(int i=0; i<component.size(); i++) {
-			leafLocation.add((Location)component.get(i));
+		for(int index=0; index<component.size(); index++) {
+			leafLocation.add((Location)component.get(index));
 		}
 		return leafLocation;
 	}
@@ -114,9 +115,9 @@ public class Location implements Serializable,Component{
 	/*
 	 * add a "children-location"
 	 */
-	public void add(Component c) {
-		component.add(c);
-		((Location)c).parentLocation= this;
+	public void add(Component ourComponent) {
+		component.add(ourComponent);
+		((Location)ourComponent).parentLocation= this;
 	}
 	
 	/*
@@ -144,9 +145,9 @@ public class Location implements Serializable,Component{
 	 */
 	public int getSize() {
 		if (isLeaf()) return 0;
-		int size = 0;
-		for (int i = 0; i < component.size(); i++) 
-			size += component.get(i).getSize();
+		int size = FIRST_SIZE ;
+		for (int index = 0; index < component.size(); index++) 
+			size += component.get(index).getSize();
 		return size+ component.size();
 	}
 	/*
@@ -205,14 +206,14 @@ public class Location implements Serializable,Component{
 	public String print(int space) {
 		String string = "";
 		if(isLeaf()) {
-			for (int i=0; i<space; i++) 
+			for (int index=0; index<space; index++) 
 				string = string + " ";
 			string = string + this.toString() + System.getProperty("line.separator");
 			return string;
 		}
 		
-		for (int i = 0; i < component.size(); i++) {
-			string += component.get(i).print(space+2);
+		for (int index = 0; index < component.size(); index++) {
+			string += component.get(index).print(space+2);
 		}
 		return string;
 	}

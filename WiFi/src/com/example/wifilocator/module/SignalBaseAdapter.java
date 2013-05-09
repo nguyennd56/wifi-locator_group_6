@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 public class SignalBaseAdapter extends BaseAdapter{
 
-	
 	private final static int ICON_ID_POOR_L1 = com.example.wifilocator_rebuild.R.drawable.level_0_poor;
 	private final static int ICON_ID_POOR_L2 = com.example.wifilocator_rebuild.R.drawable.level_1_poor;
 	private final static int ICON_ID_POOR_L3 = com.example.wifilocator_rebuild.R.drawable.level_2_poor;
@@ -32,8 +31,7 @@ public class SignalBaseAdapter extends BaseAdapter{
 	private final static int FAIR = 3;
 	private final static int GOOD = 4;
 	private final static int EXCELLENT = 5;
-	
-	
+		
 	private static ArrayList<Signal> listSignal;
 	
 	private Integer[] iconId = {                 //----array of wifi level image index----.
@@ -56,15 +54,15 @@ public class SignalBaseAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public Object getItem(int arg0) {
+	public Object getItem(int argument) {
 		// TODO Auto-generated method stub
-		return listSignal.get(arg0);
+		return listSignal.get(argument);
 	}
 
 	@Override
-	public long getItemId(int arg0) {
+	public long getItemId(int argument) {
 		// TODO Auto-generated method stub
-		return arg0;
+		return argument;
 	}
 
 	@Override
@@ -81,7 +79,6 @@ public class SignalBaseAdapter extends BaseAdapter{
 			holder = (ViewHolder) convertView.getTag();
 		}
 		
-
 		//------------ set wifi level image of signals basing on its strength.---------------
 		int rankSignalStrength= ((listSignal.get(position).getStrength()+100)/10);
 		switch(rankSignalStrength){

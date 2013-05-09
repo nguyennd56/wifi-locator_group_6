@@ -25,11 +25,10 @@ import android.widget.TextView;
 public class SignalsActivity extends Activity{
 
 	
-	//------variable -------
-	
-	
+	//------variables -------
 	public final static String DEFAULT_LOCATION_NAME = " Where are you?";
 	public final static int MINIMUM_NUMBER_OF_THE_SAME_SIGNAL = 2;
+	public final static int STARTING_SCORE = 0;
 	
 	private TextView Location;   
 	
@@ -51,15 +50,15 @@ public class SignalsActivity extends Activity{
 	 * set the function of add button.
 	 * call the AddCurrentLocationActivity.
 	 */
-	public void onClickAdd(View v) {
+	public void onClickAdd(View view) {
 		try{
 			Class<?> aClass = Class.forName("com.example.wifilocator_rebuild.AddCurrentPlaceActivity");
 			Intent intent = new Intent(SignalsActivity.this,aClass);
 			intent.putExtra("currentSignals",WifiScanner.getScanResults(this) );
 			startActivity(intent);
 		}
-		catch(ClassNotFoundException e){
-			e.printStackTrace();
+		catch(ClassNotFoundException exception){
+			exception.printStackTrace();
 		}
 	}
 	
@@ -86,7 +85,6 @@ public class SignalsActivity extends Activity{
 		Location.setText(determineLocate(WifiScanner.getScanResults(this)));
 	}
 	
-	
 	/**
 	 * set the function of Quit button.
 	 * exits the application.
@@ -100,8 +98,6 @@ public class SignalsActivity extends Activity{
 		
 		startActivity(intent);
 	}
-	
-	
 	
 	/**
 	 * make signals ListView.
@@ -150,16 +146,14 @@ public class SignalsActivity extends Activity{
 	 */
 	public void setLocation(ArrayList<Signal> savedListSignal, ArrayList<Signal> scanListSignal) { 
     	
-		for(int i=0; i< savedListSignal.size(); i++) {
-    		for(int j=0; j< scanListSignal.size(); j++) {
-    			if(savedListSignal.get(i).getBSSID().equals(scanListSignal.get(j).getBSSID())) {
-    				savedListSignal.get(i).setPlace(scanListSignal.get(j).getPlace());
+		for(int rowIndex=0; rowIndex< savedListSignal.size(); rowIndex++) {
+    		for(int columnIndex=0; columnIndex< scanListSignal.size(); columnIndex++) {
+    			if(savedListSignal.get(rowIndex).getBSSID().equals(scanListSignal.get(columnIndex).getBSSID())) {
+    				savedListSignal.get(rowIndex).setPlace(scanListSignal.get(columnIndex).getPlace());
     			}
     		}
     	}
     }
-	
-	
 	
 	/**
 	 * determine location by saved locations and List of current signals.
@@ -173,11 +167,11 @@ public class SignalsActivity extends Activity{
 		
 		Location data=StorageManager.loadLocation();
 		ArrayList<Location> locationsSaved =data.getLocationList();
-		int score = 0;
-		for(int i = 0;i< locationsSaved.size(); i++) {
-			int ratingScore = locationsSaved.get(i).ratingBasedSignal(scanSignal);
+		int score = STARTING_SCORE ;
+		for(int index = 0;index< locationsSaved.size(); index++) {
+			int ratingScore = locationsSaved.get(index).ratingBasedSignal(scanSignal);
 			if((ratingScore > score)&&(ratingScore > MINIMUM_NUMBER_OF_THE_SAME_SIGNAL)) {
-				locationDetail = locationsSaved.get(i).printInfo();
+				locationDetail = locationsSaved.get(index).printInfo();
 				score=ratingScore;
 			}
 		}

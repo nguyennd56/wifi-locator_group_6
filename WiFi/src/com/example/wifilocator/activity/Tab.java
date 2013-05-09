@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
-
 @SuppressWarnings("deprecation")   //remove warning of TabActivity.
 
 /**
@@ -19,8 +18,6 @@ import android.widget.TabHost.TabSpec;
  * each tab contain an other activity.
  */
 public class Tab extends TabActivity {
-
-	
 	
     //-- Called when the activity is first created. 
     @Override
@@ -31,8 +28,7 @@ public class Tab extends TabActivity {
         // Adding all TabSpec to TabHost
         addTab(generateTabSpec(tabHost), tabHost);
     }
-    
-    
+        
     private ArrayList<TabSpec> generateTabSpec(TabHost tabHost){
     	ArrayList<TabSpec> tabSpecs = new ArrayList<TabSpec>();
     	// Tab for Signals
@@ -66,8 +62,8 @@ public class Tab extends TabActivity {
     }
     
     private void addTab(final ArrayList<TabSpec> tabSpecs, TabHost tabHost){
-    	for(int i=0; i<tabSpecs.size(); i++){
-    		tabHost.addTab(tabSpecs.get(i));
+    	for(int index=0; index<tabSpecs.size(); index++){
+    		tabHost.addTab(tabSpecs.get(index));
     	}
     }
     

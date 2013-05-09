@@ -109,7 +109,7 @@ public class LocationsActivity extends Activity {
 	 * add a location without associated signals.
 	 */	
 	@SuppressWarnings("deprecation")
-	public void onClickCross(View v) {
+	public void onClickCross(View view) {
 		showDialog(0);
 	}
 	

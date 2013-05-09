@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import android.os.Environment;
 
-
 /**
 * This class is used to save and load objects.
 * The Object will be stored at the folder /SDCARD/MyFiles.
@@ -40,8 +39,8 @@ public class StorageManager {
 			objectOutputStream.flush();
 			objectOutputStream.close();
 		}
-		catch (IOException ioe) {
-			ioe.printStackTrace();
+		catch (IOException ioException) {
+			ioException.printStackTrace();
 		}
 		
 	}
@@ -65,14 +64,14 @@ public class StorageManager {
             	root=(Location)objectInputStream.readObject();
             }		           
 		}
-		catch (EOFException e) {
-			e.printStackTrace();
+		catch (EOFException EOFException) {
+			EOFException.printStackTrace();
 		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
+		catch (ClassNotFoundException classNotFoundException) {
+			classNotFoundException.printStackTrace();
 		}
-		catch (IOException ioe) {
-			ioe.printStackTrace();
+		catch (IOException ioException) {
+			ioException.printStackTrace();
 		}
 		return root;
 		
