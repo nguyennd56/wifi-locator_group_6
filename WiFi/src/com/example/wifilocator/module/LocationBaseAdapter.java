@@ -17,9 +17,9 @@ import android.widget.TextView;
  * generated from saved locations.
  */
 
-public class LocationBaseAdapter extends BaseAdapter{
+public class LocationBaseAdapter extends BaseAdapter {
 
-	private final static int DEFAULT_ID =Integer.valueOf(com.example.wifilocator_rebuild.R.drawable.fi_scan);
+	private final static int DEFAULT_ID = Integer.valueOf(com.example.wifilocator_rebuild.R.drawable.fi_scan);
 		
 	//---variables----
 	private static ArrayList<Location> locationList;
@@ -54,10 +54,11 @@ public class LocationBaseAdapter extends BaseAdapter{
 		// TODO Auto-generated method stub
 		ViewHolder holder;
 		//--create ViewHolder object--
-		if(convertView==null){
+		if (convertView == null) {
 			holder = new ViewHolder();
 			holder.setIdHolder(convertView, layoutInflater);
-		}else{
+		}
+		else{
 			holder = (ViewHolder) convertView.getTag();
 		}
 		
@@ -72,29 +73,30 @@ public class LocationBaseAdapter extends BaseAdapter{
  * set of all things will be shown at Locations listView.
  */
 
-class ViewHolder{
+class ViewHolder {
 	private TextView locationName;
 	private ImageView locationIcon;
 	
-	public ViewHolder(){}
+	public ViewHolder() {}
 	
-	public ViewHolder(String name, int id){
+	public ViewHolder(String name, int id) {
 		super();
 		this.locationName.setText(name);
 		this.locationIcon.setImageResource(id);
 	}
 	
-	public void setLocationName(String name){
+	public void setLocationName(String name ){
 		this.locationName.setText(name);
 	}
-	public void setLocationIcon(int id){
+	
+	public void setLocationIcon(int id) {
 		this.locationIcon.setImageResource(id);
 	}
 	
-	public void setIdHolder(View view, LayoutInflater layoutInflater){
+	public void setIdHolder(View view, LayoutInflater layoutInflater) {
 		view = layoutInflater.inflate(com.example.wifilocator_rebuild.R.layout.location_form, null);
-		this.locationName= (TextView) view.findViewById(R.id.location_name_shower);
-		this.locationIcon=(ImageView) view.findViewById(R.id.location_icon);
+		this.locationName = (TextView) view.findViewById(R.id.location_name_shower);
+		this.locationIcon = (ImageView) view.findViewById(R.id.location_icon);
 		view.setTag(this);
 	}
 	

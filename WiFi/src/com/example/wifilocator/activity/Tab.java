@@ -29,8 +29,9 @@ public class Tab extends TabActivity {
         addTab(generateTabSpec(tabHost), tabHost);
     }
         
-    private ArrayList<TabSpec> generateTabSpec(TabHost tabHost){
+    private ArrayList<TabSpec> generateTabSpec(TabHost tabHost) {
     	ArrayList<TabSpec> tabSpecs = new ArrayList<TabSpec>();
+    	
     	// Tab for Signals
         TabSpec Signalspec = tabHost.newTabSpec("Signals");
         Signalspec.setIndicator("Signals", getResources().getDrawable(R.drawable.icon_photos_tab));
@@ -39,6 +40,7 @@ public class Tab extends TabActivity {
         
         // Tab for Locations
         TabSpec Locationspec = tabHost.newTabSpec("Locations");
+        
         // setting Title and Icon for the Tab
         Locationspec.setIndicator("Locations", getResources().getDrawable(R.drawable.icon_songs_tab));
         Intent LocationsIntent = new Intent(this, LocationsActivity.class);
@@ -61,8 +63,8 @@ public class Tab extends TabActivity {
         
     }
     
-    private void addTab(final ArrayList<TabSpec> tabSpecs, TabHost tabHost){
-    	for(int index=0; index<tabSpecs.size(); index++){
+    private void addTab(final ArrayList<TabSpec> tabSpecs, TabHost tabHost) {
+    	for(int index = 0; index < tabSpecs.size(); index++) {
     		tabHost.addTab(tabSpecs.get(index));
     	}
     }

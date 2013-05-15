@@ -33,8 +33,8 @@ public class StartUp extends Activity {
 		enableWifi();
 		
         //---delay time to ensure that WiFi is on after enabling
-        new Thread(new Runnable(){ 
-             public void run(){ 
+        new Thread(new Runnable() { 
+             public void run() { 
                   //delay time to enable WiFi 
                  runDelayTime();
                   //run progerssBar
@@ -52,33 +52,33 @@ public class StartUp extends Activity {
 		finish();
 	}
 	
-	private void setUp(){
+	private void setUp() {
 		setContentView(R.layout.startup_layout);
 		progressBar = (ProgressBar) findViewById(R.id.progressBar1); 
 		wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 	}
 	
-	private static void enableWifi(){
-		if(!wifiManager.isWifiEnabled()){
+	private static void enableWifi() {
+		if (!wifiManager.isWifiEnabled()) {
 			wifiManager.setWifiEnabled(true);
 		}
 	}
 
-	private void runTabActivity(){
-		try{
-            Class<?> Myclass= Class.forName("com.example.wifilocator_rebuild.MainTabActivity");
+	private void runTabActivity() {
+		try {
+            Class<?> Myclass = Class.forName("com.example.wifilocator_rebuild.MainTabActivity");
             Intent activity = new Intent(StartUp.this, Myclass);
             startActivity(activity);
         }
-		catch(ClassNotFoundException exception){
+		catch(ClassNotFoundException exception) {
 			exception.printStackTrace();
 		}
 	}
 	
-	private void runProgressBar(){
+	private void runProgressBar() {
 		Handler handler = new Handler();
-        handler.post(new Runnable(){ 
-             public void run(){  
+        handler.post(new Runnable() { 
+             public void run() {  
                   progressBar.setVisibility(View.GONE); 
              } 
         });

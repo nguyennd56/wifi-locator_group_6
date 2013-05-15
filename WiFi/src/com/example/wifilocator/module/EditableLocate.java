@@ -20,7 +20,8 @@ import android.widget.TextView;
  * quite similar to class LocationForm but it has a delete button more.
  */
 
-public class EditableLocate extends BaseAdapter{
+public class EditableLocate extends BaseAdapter {
+	
 	//variables
 	final static Integer IMAGE = Integer.valueOf(com.example.wifilocator_rebuild.R.drawable.fi_scan);
 	private static ArrayList<Location> locationList;
@@ -31,6 +32,7 @@ public class EditableLocate extends BaseAdapter{
 		locationList = results;
 		layoutInflater = LayoutInflater.from(context);
 	}
+	
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
@@ -53,14 +55,14 @@ public class EditableLocate extends BaseAdapter{
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		final ViewHolder holder;
-		if(convertView == null){
+		if (convertView == null) {
 			//set ID viewHolder element
-				//set view
+			//set view
 			convertView = layoutInflater.inflate(com.example.wifilocator_rebuild.R.layout.location_form_edit, null);
 			holder = new ViewHolder();
-				//set id
+			//set id
 			holder.place_name = (TextView) convertView.findViewById(R.id.location_name_edit_shower);
-			holder.location_icon =(ImageView) convertView.findViewById(R.id.location_edit_icon);
+			holder.location_icon = (ImageView) convertView.findViewById(R.id.location_edit_icon);
 			holder.delButton = (Button) convertView.findViewById(R.id.delete_location);
 			convertView.setTag(holder);
 		}
@@ -70,8 +72,9 @@ public class EditableLocate extends BaseAdapter{
 		//set content viewHolder element
 		holder.place_name.setText(locationList.get(position).getLocationName());
 		holder.location_icon.setImageResource(IMAGE);
-			//--- set click on Click of delete button---
-		holder.delButton.setOnClickListener(new OnClickListener(){
+		
+		//--- set click on Click of delete button---
+		holder.delButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Location location = (Location) locationList.get(position);
@@ -87,7 +90,7 @@ public class EditableLocate extends BaseAdapter{
 	/*
 	 * set of all things will be shown at Edit Locations listView.
 	 */
-	static class ViewHolder{
+	static class ViewHolder {
 		private TextView place_name;
 		private ImageView location_icon;
 		private Button delButton;

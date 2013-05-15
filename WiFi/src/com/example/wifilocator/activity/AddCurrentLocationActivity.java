@@ -48,14 +48,14 @@ public class AddCurrentLocationActivity extends Activity {
 		//load saved location 
 		defaultLocation=StorageManager.loadLocation();
 		// first we just consider chosenLocation as defaultLocation
-		catchSignal= (ArrayList<Signal>) getIntent().getSerializableExtra("currentSignals");
-		chosenLocation=defaultLocation;
+		catchSignal = (ArrayList<Signal>) getIntent().getSerializableExtra("currentSignals");
+		chosenLocation = defaultLocation;
 		//--- make listView of locations---
 		setListView(defaultLocation);
 	}
 	
 	public void setListView(Location location) {
-		ArrayList<Location> leafLocation= location.getLeafLocation();
+		ArrayList<Location> leafLocation = location.getLeafLocation();
 		final ListView listView = (ListView) findViewById(R.id.listview_add_location);
 		listView.setAdapter(new LocationBaseAdapter(this,leafLocation));
 		
@@ -63,7 +63,7 @@ public class AddCurrentLocationActivity extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
         	@Override
         	public void onItemClick(AdapterView<?> a, View v, int position, long id) { 
-        		chosenLocation=(Location)listView.getItemAtPosition(position);
+        		chosenLocation = (Location)listView.getItemAtPosition(position);
         		setListView(chosenLocation);
         	}
 		});
@@ -71,8 +71,8 @@ public class AddCurrentLocationActivity extends Activity {
 	
 	//----- back to view list of parent location----
 	public void onClickBack() {
-		if(chosenLocation.getParent()!=null) {
-			chosenLocation= (Location)chosenLocation.getParent();
+		if (chosenLocation.getParent() != null) {
+			chosenLocation = (Location)chosenLocation.getParent();
 			setListView(chosenLocation);
 		}
 	}
@@ -96,4 +96,3 @@ public class AddCurrentLocationActivity extends Activity {
 	}
 		
 }
-

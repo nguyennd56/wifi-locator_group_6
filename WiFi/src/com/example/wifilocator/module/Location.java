@@ -25,11 +25,11 @@ public class Location implements Serializable,Component{
 	private Component parentLocation;
 
 	//----------Constructor---------.
-	public Location(String _placeName,ArrayList<Signal> _associatedSignals) {
-		location=_placeName;
-		basedSignal=_associatedSignals;
-		component= new ArrayList<Component>();
-		parentLocation= null;
+	public Location(String _placeName, ArrayList<Signal> _associatedSignals) {
+		location = _placeName;
+		basedSignal = _associatedSignals;
+		component = new ArrayList<Component>();
+		parentLocation = null;
 	}
 	
 	//--------Functions--------.
@@ -62,10 +62,9 @@ public class Location implements Serializable,Component{
 	public int ratingBasedSignal(ArrayList<Signal> listSignals) {
 		int ratingScore = BASE_SCORE;
 		//compare each signal on list with all base signal
-		for(int rowIndex=0; rowIndex<listSignals.size(); rowIndex++){
-			for(int columnIndex=0; columnIndex<basedSignal.size();columnIndex++) {
-				
-				if(listSignals.get(rowIndex).equals(basedSignal.get(columnIndex))){
+		for (int rowIndex = 0; rowIndex < listSignals.size(); rowIndex++) {
+			for (int columnIndex = 0; columnIndex < basedSignal.size(); columnIndex++) {	
+				if (listSignals.get(rowIndex).equals(basedSignal.get(columnIndex))) {
 					ratingScore = increaseScore(ratingScore);
 				}
 			}
@@ -74,7 +73,7 @@ public class Location implements Serializable,Component{
 		return ratingScore;
 	}
 	
-	private int increaseScore(int score){
+	private int increaseScore(int score) {
 		return score++;
 	}
 	
@@ -87,11 +86,11 @@ public class Location implements Serializable,Component{
 
 	public ArrayList<Location> getLocationList() {
 		
-		ArrayList<Location> locations= new ArrayList<Location>();
-		ArrayList<Component> components= getAllOfspings();
+		ArrayList<Location> locations = new ArrayList<Location>();
+		ArrayList<Component> components = getAllOfspings();
 		
 		//each component contains class of locations - has same level
-		for(int index =0; index< components.size(); index++){
+		for (int index = 0; index < components.size(); index++) {
 			locations.add((Location)components.get(index));
 		}
 		
@@ -104,9 +103,10 @@ public class Location implements Serializable,Component{
 	public ArrayList<Location> getLeafLocation() {
 
 		ArrayList<Location> leafLocation= new ArrayList<Location>();
-		for(int index=0; index<component.size(); index++) {
+		for (int index = 0; index < component.size(); index++) {
 			leafLocation.add((Location)component.get(index));
 		}
+		
 		return leafLocation;
 	}
 		
@@ -127,7 +127,7 @@ public class Location implements Serializable,Component{
 		component.remove(index);
 	}
 	public boolean isLeaf() {
-		return (component.size()==0);
+		return (component.size() == 0);
 	}
 	
 	/*
@@ -135,7 +135,7 @@ public class Location implements Serializable,Component{
 	 * the ancestor of all components.
 	 */
 	public Component getRoot() {
-		if(parentLocation==null) return this;
+		if (parentLocation == null) return this;
 		return parentLocation.getRoot();
 	}
 	
@@ -150,12 +150,14 @@ public class Location implements Serializable,Component{
 			size += component.get(index).getSize();
 		return size+ component.size();
 	}
+	
 	/*
 	 * return a child by index.
 	 */
 	public Component getChild (int index) {
 		return component.get(index);
 	}
+	
 	/*
 	 * return all children component.
 	 */
@@ -168,17 +170,18 @@ public class Location implements Serializable,Component{
 	 */
 	public ArrayList<Component> getAllOfspings() {
 		
-		ArrayList<Component> allOfSping= new ArrayList<Component>();
+		ArrayList<Component> allOfSping = new ArrayList<Component>();
 		preOrder(allOfSping,this);
 		return allOfSping;
 	}
+	
 	/*
 	 * search wikipedia.com to more detail.
 	 */
-	public void preOrder(ArrayList<Component> allOfSping,Component root) {
+	public void preOrder(ArrayList<Component> allOfSping, Component root) {
 		
 		allOfSping.add(root);
-		for(int i=0; i< root.getAllChildren().size(); i++) {
+		for (int i = 0; i < root.getAllChildren().size(); i++) {
 			preOrder(allOfSping,root.getChild(i));
 		}
 	}
@@ -189,11 +192,12 @@ public class Location implements Serializable,Component{
 	public Component getParent() {
 		return parentLocation;
 	}
+	
 	/*
 	 * return a string of this name and all ancestor name.
 	 */
 	public String printInfo() {
-		if(parentLocation==null) {
+		if (parentLocation == null) {
 			return (this.toString());
 		}
 		String allDetail = ((Location)parentLocation).printInfo()+this.toString();
@@ -205,8 +209,8 @@ public class Location implements Serializable,Component{
 	 */
 	public String print(int space) {
 		String string = "";
-		if(isLeaf()) {
-			for (int index=0; index<space; index++) 
+		if (isLeaf()) {
+			for (int index = 0; index < space; index++) 
 				string = string + " ";
 			string = string + this.toString() + System.getProperty("line.separator");
 			return string;
@@ -215,8 +219,10 @@ public class Location implements Serializable,Component{
 		for (int index = 0; index < component.size(); index++) {
 			string += component.get(index).print(space+2);
 		}
+		
 		return string;
 	}
+	
 	public String toString() {
 		return " "+location+".";
 	}

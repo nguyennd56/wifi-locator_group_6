@@ -21,12 +21,13 @@ import android.net.wifi.WifiManager;
  */
 
 
-public class WifiScanner{
+public class WifiScanner {
+	
 	//static variables
 	private static WifiManager wifiManager;
 	private static WifiReceiver wifiReceiver;
 	
-	public static ArrayList<Signal> getScanResults(Activity activity){
+	public static ArrayList<Signal> getScanResults(Activity activity) {
 		
 		setUp(activity);
 		
@@ -45,12 +46,12 @@ public class WifiScanner{
 	
 	private static void enableWifi(Activity activity){
 		wifiManager = (WifiManager)activity.getSystemService(Context.WIFI_SERVICE);
-		if(!wifiManager.isWifiEnabled()){
+		if (!wifiManager.isWifiEnabled()) {
 			wifiManager.setWifiEnabled(true);
 		}
 	}
 	
-	private static ArrayList<Signal> getScan(){
+	private static ArrayList<Signal> getScan() {
 		wifiManager.startScan();
 	    List<ScanResult> wifiList = wifiManager.getScanResults();
 
@@ -58,12 +59,12 @@ public class WifiScanner{
 		Signal signal;
 		
 		//---- cover ScanResult objects to Signals objects-----
-		for(int i=0; i<wifiList.size(); i++){
+		for(int i = 0; i < wifiList.size(); i++) {
 			String ssid = "SSID:".concat(wifiList.get(i).SSID);
 			String name = "Name:".concat("unknown");
 			String bssid= "BSSID:".concat(wifiList.get(i).BSSID);
 			int strength = wifiList.get(i).level;
-			signal = new Signal(strength,ssid,bssid, name);
+			signal = new Signal(strength, ssid, bssid, name);
 			signals.add(signal);
 			
 		}

@@ -51,7 +51,7 @@ public class SignalsActivity extends Activity{
 	 * call the AddCurrentLocationActivity.
 	 */
 	public void onClickAdd(View view) {
-		try{
+		try {
 			Class<?> aClass = Class.forName("com.example.wifilocator_rebuild.AddCurrentPlaceActivity");
 			Intent intent = new Intent(SignalsActivity.this,aClass);
 			intent.putExtra("currentSignals",WifiScanner.getScanResults(this) );
@@ -146,9 +146,9 @@ public class SignalsActivity extends Activity{
 	 */
 	public void setLocation(ArrayList<Signal> savedListSignal, ArrayList<Signal> scanListSignal) { 
     	
-		for(int rowIndex=0; rowIndex< savedListSignal.size(); rowIndex++) {
-    		for(int columnIndex=0; columnIndex< scanListSignal.size(); columnIndex++) {
-    			if(savedListSignal.get(rowIndex).getBSSID().equals(scanListSignal.get(columnIndex).getBSSID())) {
+		for (int rowIndex = 0; rowIndex < savedListSignal.size(); rowIndex++) {
+    		for (int columnIndex = 0; columnIndex < scanListSignal.size(); columnIndex++) {
+    			if (savedListSignal.get(rowIndex).getBSSID().equals(scanListSignal.get(columnIndex).getBSSID())) {
     				savedListSignal.get(rowIndex).setPlace(scanListSignal.get(columnIndex).getPlace());
     			}
     		}
@@ -163,16 +163,16 @@ public class SignalsActivity extends Activity{
 	 */
 	private String determineLocate(ArrayList<Signal> scanSignal) {
 		
-		String locationDetail=DEFAULT_LOCATION_NAME;
+		String locationDetail = DEFAULT_LOCATION_NAME;
 		
-		Location data=StorageManager.loadLocation();
-		ArrayList<Location> locationsSaved =data.getLocationList();
+		Location data = StorageManager.loadLocation();
+		ArrayList<Location> locationsSaved = data.getLocationList();
 		int score = STARTING_SCORE ;
-		for(int index = 0;index< locationsSaved.size(); index++) {
+		for (int index = 0; index < locationsSaved.size(); index++) {
 			int ratingScore = locationsSaved.get(index).ratingBasedSignal(scanSignal);
-			if((ratingScore > score)&&(ratingScore > MINIMUM_NUMBER_OF_THE_SAME_SIGNAL)) {
+			if ((ratingScore > score)&&(ratingScore > MINIMUM_NUMBER_OF_THE_SAME_SIGNAL)) {
 				locationDetail = locationsSaved.get(index).printInfo();
-				score=ratingScore;
+				score = ratingScore;
 			}
 		}
 		
@@ -184,6 +184,5 @@ public class SignalsActivity extends Activity{
 		
 		return ("Current location: "+locationDetail);
 	}
-	
 
 }

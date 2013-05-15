@@ -29,11 +29,11 @@ public class StorageManager {
 	 * just need save the root, all referent location will be saved too.
 	 */
 	public static void saveLocation( Location location) {
-		try{
+		try {
 			//---SD Card Storage---			
             File file = new File(loadFileOnSDCard(), LOCATION_FILE_NAME);            
             FileOutputStream fileOutputStream = new FileOutputStream(file);
-            ObjectOutputStream objectOutputStream= new ObjectOutputStream(fileOutputStream);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             
 			objectOutputStream.writeObject(location);
 			objectOutputStream.flush();
@@ -53,15 +53,14 @@ public class StorageManager {
 		
 		activeFileLocation();
 		
-		Location root=new Location(null,null);
-		try{
-			
+		Location root = new Location(null, null);
+		try {
 	        File file = new File(loadFileOnSDCard(), LOCATION_FILE_NAME);
             FileInputStream fileInputStream = new FileInputStream(file);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             
             while (true) {
-            	root=(Location)objectInputStream.readObject();
+            	root = (Location)objectInputStream.readObject();
             }		           
 		}
 		catch (EOFException EOFException) {
@@ -85,25 +84,22 @@ public class StorageManager {
 	
 		activeFileSignal();
 		
-		try{
+		try {
 			//---SD Card Storage---
 			        
 	            File file = new File(loadFileOnSDCard(), SIGNAL_FILE_NAME);
 	            
 	            FileOutputStream fileOuputStream = new FileOutputStream(file,true);
 	            
-	            ObjectOutputStream objectOutputStream= new AppendingObjectOutputStream(fileOuputStream);
-	            
-	            
+	            ObjectOutputStream objectOutputStream = new AppendingObjectOutputStream(fileOuputStream);
 				objectOutputStream.writeObject(aSignal);
 				objectOutputStream.close();
 			
-		}catch (IOException ioException)
-		{
+		}
+		catch (IOException ioException) {
 			ioException.printStackTrace();
 		}
          
-		
 	}
 	
 	/*
@@ -111,9 +107,8 @@ public class StorageManager {
 	 *  return a ArrayList of Signals.
 	 */
 	public static ArrayList<Signal> loadSignals () {
-		ArrayList<Signal> signalsList= new ArrayList<Signal>();
-    	try
-		{
+		ArrayList<Signal> signalsList = new ArrayList<Signal>();
+    	try {
 	    	
 	        File file = new File(loadFileOnSDCard(), SIGNAL_FILE_NAME);
 	        FileInputStream fileInputStream = new FileInputStream(file);
@@ -124,10 +119,10 @@ public class StorageManager {
 		}
         catch (EOFException exception) {
 			exception.printStackTrace();
-			}
+		}
 		catch (ClassNotFoundException exception) {
 			exception.printStackTrace();
-			}
+		}
 		catch (IOException ioException) {
 			ioException.printStackTrace();
 		}
@@ -135,54 +130,54 @@ public class StorageManager {
 	    return signalsList;
     }
 	
-	private static File loadFileOnSDCard(){
+	private static File loadFileOnSDCard() {
 		File sdCard = Environment.getExternalStorageDirectory();
-        File directory = new File (sdCard.getAbsolutePath() +
-            FOLDER_NAME);
+        File directory = new File (sdCard.getAbsolutePath() + FOLDER_NAME);
         directory.mkdirs();
         return directory;
 	}
 
-	private static void activeFileLocation(){
-		try{
+	private static void activeFileLocation() {
+		try {
 			//---SD Card Storage---
 			
 			File sdCard = Environment.getExternalStorageDirectory();
-            if(!(new File(sdCard.getAbsolutePath() +
-                    FOLDER_NAME+"/"+LOCATION_FILE_NAME).exists())){
+            if (!(new File(sdCard.getAbsolutePath() +
+                    FOLDER_NAME+"/"+LOCATION_FILE_NAME).exists())) {
             	File file = new File(loadFileOnSDCard(), LOCATION_FILE_NAME);			// check whether file exist.
 	            
-	            FileOutputStream fileOutputStream = new FileOutputStream(file,true);
+	            FileOutputStream fileOutputStream = new FileOutputStream(file, true);
 	            
-	            ObjectOutputStream objectOutputStream= new ObjectOutputStream(fileOutputStream);
+	            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 	            objectOutputStream.writeObject(new Location("All location", new ArrayList<Signal>())); // if not create and write the default object to file. 
 	            objectOutputStream.flush();
 	            objectOutputStream.close();
             }
         }
-		catch (IOException ioExcepiton){
+		catch (IOException ioExcepiton) {
 			ioExcepiton.printStackTrace();
     	}
 	}
 	
-	private static void activeFileSignal(){
-		try{
+	private static void activeFileSignal() {
+		try {
 			//---SD Card Storage---
 			File sdCard = Environment.getExternalStorageDirectory();
-            if(!(new File(sdCard.getAbsolutePath() +
-                    FOLDER_NAME +"/" + SIGNAL_FILE_NAME).exists())){
+            if (!(new File(sdCard.getAbsolutePath() +
+                    FOLDER_NAME +"/" + SIGNAL_FILE_NAME).exists())) {
             	File file = new File(loadFileOnSDCard(), SIGNAL_FILE_NAME);
 	            
 	            FileOutputStream fileOutputStream = new FileOutputStream(file,true);
 	            
-	            ObjectOutputStream objectOutputStream= new ObjectOutputStream(fileOutputStream);
-	            objectOutputStream.writeObject(new Signal(000,"UNKNOW","UNKNOW","UNKNOW"));
+	            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+	            objectOutputStream.writeObject(new Signal(000, "UNKNOW", "UNKNOW", "UNKNOW"));
 	            objectOutputStream.close();
             }
-        }catch (IOException ioException)
-    	{
+        }
+		catch (IOException ioException) {
 			ioException.printStackTrace();
     	}
 		
 	}
+	
 }

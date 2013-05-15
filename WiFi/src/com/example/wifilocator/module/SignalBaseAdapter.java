@@ -41,6 +41,7 @@ public class SignalBaseAdapter extends BaseAdapter{
 			ICON_ID_EXCELLENT
 			};
 	private LayoutInflater layoutInflater;
+	
 	//constructor
 	public SignalBaseAdapter(Context context, ArrayList<Signal> results) {
 		listSignal = results;
@@ -71,7 +72,7 @@ public class SignalBaseAdapter extends BaseAdapter{
 		String name, ssid, rate;
 		int icon;
 		
-		if(convertView==null){
+		if (convertView == null) {
 			holder = new ViewHolder();
 			holder.setIdHolder(layoutInflater, convertView);
 		}
@@ -80,7 +81,8 @@ public class SignalBaseAdapter extends BaseAdapter{
 		}
 		
 		//------------ set wifi level image of signals basing on its strength.---------------
-		int rankSignalStrength= ((listSignal.get(position).getStrength()+100)/10);
+		int rankSignalStrength= ((listSignal.get(position).getStrength() + 100) / 10);
+		
 		switch(rankSignalStrength){
 			case POOR_1: 		icon = iconId[0];	rate = "level: poor";		break;
 			case POOR_2: 		icon = iconId[1];	rate = "level: poor";		break;
@@ -90,26 +92,29 @@ public class SignalBaseAdapter extends BaseAdapter{
 			case EXCELLENT: 	icon = iconId[5];	rate = "level: excellent";	break;
 			default:			icon = iconId[0];	rate = "level: unknown";	break;
 		}
+		
 		ssid = listSignal.get(position).getSSID();
 		name = listSignal.get(position).getPlace();
 		
 		holder = new ViewHolder(name,ssid,rate,icon);
 		
 		return convertView;
+		
 	}
 	
 	/*
 	 * set of all things will be shown at Signals listView.
 	 */
-	static class ViewHolder{
+	static class ViewHolder {
+		
 		private TextView txt_name;
 		private TextView txt_SSID;
 		private TextView txt_rate;
 		private ImageView icon;
 		
-		public ViewHolder(){}
+		public ViewHolder() {}
 		
-		public ViewHolder(String name, String ssid, String rate, int icon){
+		public ViewHolder(String name, String ssid, String rate, int icon) {
 			super();
 			this.txt_name.setText(name);
 			this.txt_SSID.setText(ssid);
@@ -117,7 +122,8 @@ public class SignalBaseAdapter extends BaseAdapter{
 			this.icon.setImageResource(icon);
 		}
 		
-		public void setIdHolder(LayoutInflater layoutInflater, View view){
+		public void setIdHolder(LayoutInflater layoutInflater, View view) {
+			
 			view = layoutInflater.inflate(com.example.wifilocator_rebuild.R.layout.signal_form, null);
 			this.txt_name = (TextView)view.findViewById(com.example.wifilocator_rebuild.R.id.name);
 			this.txt_SSID = (TextView)view.findViewById(com.example.wifilocator_rebuild.R.id.ssid);
@@ -125,6 +131,7 @@ public class SignalBaseAdapter extends BaseAdapter{
 			this.icon 	  = (ImageView)view.findViewById(com.example.wifilocator_rebuild.R.id.wifi_level);
 			view.setTag(this);
 		} 
+	
 	}
 
 }

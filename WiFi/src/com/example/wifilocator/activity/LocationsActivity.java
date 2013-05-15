@@ -30,7 +30,6 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class LocationsActivity extends Activity {
 
-	
 	//---variable--
 	private Location root;
 	private Location clickedLocation;
@@ -47,13 +46,13 @@ public class LocationsActivity extends Activity {
 		setContentView(R.layout.locations_manager_layout);
 		
 		//--- set value for all variable---
-		isEdit=false;
-		root=StorageManager.loadLocation();
-		clickedLocation=root;
-		locationName= (TextView) findViewById(R.id.location_name);
+		isEdit = false;
+		root = StorageManager.loadLocation();
+		clickedLocation = root;
+		locationName = (TextView) findViewById(R.id.location_name);
 		locationName.setText(clickedLocation.printInfo());
-		Edit =(Button) findViewById(R.id.edit_location);
-		editField= new EditText(this);
+		Edit = (Button) findViewById(R.id.edit_location);
+		editField = new EditText(this);
 		editField.setTextSize(20);
 		editField.setLines(4);
 	
@@ -69,7 +68,7 @@ public class LocationsActivity extends Activity {
 
 	public void setListView(Location currentChoice) {
 
-		ArrayList<Location> allChildren= currentChoice.getLeafLocation();
+		ArrayList<Location> allChildren = currentChoice.getLeafLocation();
 		locationName.setText(currentChoice.printInfo());
 		final ListView listView = (ListView) findViewById(R.id.listview_location);
 		listView.setAdapter(new LocationBaseAdapter(this,allChildren));
@@ -77,7 +76,7 @@ public class LocationsActivity extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
         	@Override
         	public void onItemClick(AdapterView<?> adapter, View view, int position, long id) { 
-        		clickedLocation=(Location)listView.getItemAtPosition(position);
+        		clickedLocation = (Location)listView.getItemAtPosition(position);
         		setListView(clickedLocation);
         	}
 		});
@@ -90,7 +89,7 @@ public class LocationsActivity extends Activity {
 	 */
 	public void setListViewEdit (Location currentChoice) {
 
-		ArrayList<Location> allChildren= currentChoice.getLeafLocation();
+		ArrayList<Location> allChildren = currentChoice.getLeafLocation();
 		locationName.setText(currentChoice.printInfo());
 		final ListView listView = (ListView) findViewById(R.id.listview_location);
 		listView.setAdapter(new EditableLocate(this,allChildren));
@@ -98,7 +97,7 @@ public class LocationsActivity extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
         	@Override
         	public void onItemClick(AdapterView<?> adapter, View view, int position, long id) { 
-        		clickedLocation=(Location)listView.getItemAtPosition(position);
+        		clickedLocation = (Location)listView.getItemAtPosition(position);
         		setListView((Location)clickedLocation.getParent());
         	}
 		});
@@ -158,16 +157,16 @@ public class LocationsActivity extends Activity {
 	 * change clickedLoction to it parent then setListView it.
 	 */
 	public void onClickBack() {
-		if(clickedLocation.getParent()!=null) {
-			clickedLocation=(Location)clickedLocation.getParent();
+		if (clickedLocation.getParent() != null) {
+			clickedLocation = (Location)clickedLocation.getParent();
 			setListView(clickedLocation);
 		}
 		else{
 			Toast.makeText(getBaseContext(),
 					"Parent location is null"+clickedLocation.toString(),
 					Toast.LENGTH_SHORT).show();
-			root= StorageManager.loadLocation();
-			clickedLocation=root;
+			root = StorageManager.loadLocation();
+			clickedLocation = root;
 			setListView(root);
 		}
 	}
@@ -179,13 +178,13 @@ public class LocationsActivity extends Activity {
 	 * restore to setListView then save Location when "done". 
 	 */
 	public void onClickEdit() {
-		if(!isEdit){
-			isEdit=true;
+		if (!isEdit) {
+			isEdit = true;
 			setListViewEdit(clickedLocation);
 			Edit.setText("Done");
 		}
 		else{
-			isEdit=false;
+			isEdit = false;
 			setListView(clickedLocation);
 			Edit.setText("Edit");
 			StorageManager.saveLocation(root);
